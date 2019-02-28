@@ -1,0 +1,391 @@
+{
+    "Currency": [
+        {
+            "id": "1",
+            "filename": "/images/scurrency/1.png",
+            "name": "œ·«— ¬„—Ìò«",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "3",
+            "filename": "/images/scurrency/uk.png",
+            "name": "ÅÊ‰œ «‰ê·Ì”",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "4",
+            "filename": "/images/scurrency/switzerland.png",
+            "name": "›—«‰ò ”ÊÌ”",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "5",
+            "filename": "/images/scurrency/sweden.png",
+            "name": "ò—Ê‰ ”Ê∆œ",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "6",
+            "filename": "/images/scurrency/united-arab-emirates.png",
+            "name": "œ—Â„ «„«—« ",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "7",
+            "filename": "/images/scurrency/kuwait.png",
+            "name": "œÌ‰«— òÊÌ ",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "8",
+            "filename": "/images/scurrency/turkey.png",
+            "name": "·Ì—  —òÌÂ",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "9",
+            "filename": "/images/scurrency/iraq.png",
+            "name": "Ìò’œ œÌ‰«— ⁄—«ﬁ",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "10",
+            "filename": "/images/scurrency/australia.png",
+            "name": "œ·«— «” —«·Ì«",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "11",
+            "filename": "/images/scurrency/china.png",
+            "name": "ÌÊ«‰ çÌ‰",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "12",
+            "filename": "/images/scurrency/world.png",
+            "name": "ÌÊ—Ê",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        },
+        {
+            "id": "13",
+            "filename": "/images/scurrency/afghanistan.png",
+            "name": "«›€«‰Ì «›€«‰” «‰",
+            "inc_dec": "0",
+            "chart_show": "1",
+            "status": "1",
+            "created_at": "2019-01-07 08:18:31",
+            "updated_at": "2019-01-07 08:18:31"
+        }
+    ],
+    "Scurrency": [
+        {
+            "sourcecurrency_id": "1",
+            "price": "13250",
+            "updated_at": "2019-02-27 17:07:07"
+        },
+        {
+            "sourcecurrency_id": "1",
+            "price": "13300",
+            "updated_at": "2019-02-27 16:17:29"
+        },
+        {
+            "sourcecurrency_id": "1",
+            "price": "13300",
+            "updated_at": "2019-02-27 11:03:33"
+        },
+        {
+            "sourcecurrency_id": "1",
+            "price": "13300",
+            "updated_at": "2019-02-27 08:24:34"
+        },
+        {
+            "sourcecurrency_id": "3",
+            "price": "17658",
+            "updated_at": "2019-02-27 17:07:23"
+        },
+        {
+            "sourcecurrency_id": "3",
+            "price": "17668",
+            "updated_at": "2019-02-27 11:03:33"
+        },
+        {
+            "sourcecurrency_id": "3",
+            "price": "17823",
+            "updated_at": "2019-02-27 08:31:58"
+        },
+        {
+            "sourcecurrency_id": "3",
+            "price": "18000",
+            "updated_at": "2019-02-27 08:24:34"
+        },
+        {
+            "sourcecurrency_id": "4",
+            "price": "13265",
+            "updated_at": "2019-02-27 17:07:35"
+        },
+        {
+            "sourcecurrency_id": "4",
+            "price": "13329",
+            "updated_at": "2019-02-27 08:35:16"
+        },
+        {
+            "sourcecurrency_id": "4",
+            "price": "13649",
+            "updated_at": "2019-02-27 08:31:50"
+        },
+        {
+            "sourcecurrency_id": "4",
+            "price": "13600",
+            "updated_at": "2019-02-23 22:07:19"
+        },
+        {
+            "sourcecurrency_id": "5",
+            "price": "1430",
+            "updated_at": "2019-02-27 17:07:56"
+        },
+        {
+            "sourcecurrency_id": "5",
+            "price": "1435",
+            "updated_at": "2019-02-27 08:34:40"
+        },
+        {
+            "sourcecurrency_id": "5",
+            "price": "1461",
+            "updated_at": "2019-02-27 08:31:42"
+        },
+        {
+            "sourcecurrency_id": "5",
+            "price": "1430",
+            "updated_at": "2019-02-23 22:05:49"
+        },
+        {
+            "sourcecurrency_id": "6",
+            "price": "3608",
+            "updated_at": "2019-02-27 17:08:19"
+        },
+        {
+            "sourcecurrency_id": "6",
+            "price": "3622",
+            "updated_at": "2019-02-27 08:34:10"
+        },
+        {
+            "sourcecurrency_id": "6",
+            "price": "3717",
+            "updated_at": "2019-02-27 08:31:36"
+        },
+        {
+            "sourcecurrency_id": "6",
+            "price": "3560",
+            "updated_at": "2019-02-20 20:48:07"
+        },
+        {
+            "sourcecurrency_id": "7",
+            "price": "43586",
+            "updated_at": "2019-02-27 17:08:46"
+        },
+        {
+            "sourcecurrency_id": "7",
+            "price": "43822",
+            "updated_at": "2019-02-27 08:33:45"
+        },
+        {
+            "sourcecurrency_id": "7",
+            "price": "44901",
+            "updated_at": "2019-02-27 08:31:24"
+        },
+        {
+            "sourcecurrency_id": "7",
+            "price": "43457",
+            "updated_at": "2019-02-23 22:05:56"
+        },
+        {
+            "sourcecurrency_id": "8",
+            "price": "2494",
+            "updated_at": "2019-02-27 17:09:02"
+        },
+        {
+            "sourcecurrency_id": "8",
+            "price": "2503",
+            "updated_at": "2019-02-27 10:16:54"
+        },
+        {
+            "sourcecurrency_id": "8",
+            "price": "2512",
+            "updated_at": "2019-02-27 08:33:12"
+        },
+        {
+            "sourcecurrency_id": "8",
+            "price": "2570",
+            "updated_at": "2019-02-27 08:31:09"
+        },
+        {
+            "sourcecurrency_id": "9",
+            "price": "1046",
+            "updated_at": "2019-02-27 17:09:40"
+        },
+        {
+            "sourcecurrency_id": "9",
+            "price": "11",
+            "updated_at": "2019-02-27 10:18:00"
+        },
+        {
+            "sourcecurrency_id": "9",
+            "price": "11",
+            "updated_at": "2019-02-27 08:32:55"
+        },
+        {
+            "sourcecurrency_id": "9",
+            "price": "11",
+            "updated_at": "2019-02-20 23:26:54"
+        },
+        {
+            "sourcecurrency_id": "10",
+            "price": "9455",
+            "updated_at": "2019-02-27 17:10:00"
+        },
+        {
+            "sourcecurrency_id": "10",
+            "price": "9545",
+            "updated_at": "2019-02-27 08:32:17"
+        },
+        {
+            "sourcecurrency_id": "10",
+            "price": "9735",
+            "updated_at": "2019-02-27 08:31:05"
+        },
+        {
+            "sourcecurrency_id": "10",
+            "price": "9550",
+            "updated_at": "2019-02-20 20:50:19"
+        },
+        {
+            "sourcecurrency_id": "11",
+            "price": "1984",
+            "updated_at": "2019-02-27 17:10:15"
+        },
+        {
+            "sourcecurrency_id": "11",
+            "price": "1984",
+            "updated_at": "2019-02-27 10:17:07"
+        },
+        {
+            "sourcecurrency_id": "11",
+            "price": "1990",
+            "updated_at": "2019-02-27 08:31:42"
+        },
+        {
+            "sourcecurrency_id": "11",
+            "price": "2034",
+            "updated_at": "2019-02-27 08:30:58"
+        },
+        {
+            "sourcecurrency_id": "11",
+            "price": "1950",
+            "updated_at": "2019-02-23 22:06:27"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15350",
+            "updated_at": "2019-02-27 17:10:26"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15400",
+            "updated_at": "2019-02-27 08:31:21"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15700",
+            "updated_at": "2019-02-27 08:30:52"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15500",
+            "updated_at": "2019-02-27 08:25:04"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15150",
+            "updated_at": "2019-02-23 22:05:24"
+        },
+        {
+            "sourcecurrency_id": "12",
+            "price": "15150",
+            "updated_at": "2019-02-20 20:50:33"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "178",
+            "updated_at": "2019-02-27 17:10:46"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "178",
+            "updated_at": "2019-02-27 10:16:35"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "179",
+            "updated_at": "2019-02-27 08:54:26"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "179",
+            "updated_at": "2019-02-27 08:31:03"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "184",
+            "updated_at": "2019-02-27 08:30:44"
+        },
+        {
+            "sourcecurrency_id": "13",
+            "price": "177",
+            "updated_at": "2019-02-23 22:07:03"
+        }
+    ]
+}

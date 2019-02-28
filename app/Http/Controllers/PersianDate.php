@@ -1,10 +1,4 @@
 <?php
-/**
- * Created by PhpStorm.
- * User: Mohsen
- * Date: 1/10/2019
- * Time: 3:14 PM
- */
 
 namespace App\Http\Controllers;
 
@@ -116,7 +110,7 @@ class PersianDate {
     return array($gy,$gm,$gd);
   }
 
-  function to_date($g_date,$input)
+  function toPersiandate($g_date, $input)
   {
     $g_date=str_replace('-','',$g_date);
     $g_date=str_replace('/','',$g_date);
@@ -164,11 +158,14 @@ class PersianDate {
 
   function date($input)
   {
-    return $this->to_date(date('Y').date('m').date('d'),$input);
+    return $this->toPersiandate(date('Y').date('m').date('d'),$input);
   }
 
-  public function date_to($j_date)
+  public function toGregorianDate($j_date)
   {
+    $parts = explode('/', $j_date);
+    $parts = array_reverse($parts);
+    $j_date = implode('/', $parts);
     $j_date=str_replace('/','',$j_date);
     $j_date=str_replace('-','',$j_date);
     $j_year=substr($j_date,0,4);

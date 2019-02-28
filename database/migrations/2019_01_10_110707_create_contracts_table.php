@@ -22,7 +22,7 @@ class CreateContractsTable extends Migration
             $table->string('employer');
             $table->string('executer');
             $table->string('department')->nullable();
-            $table->string('group')->nullable();
+            $table->string('group_name')->nullable();
             $table->date('start_date')->nullable();
             $table->date('finish_date')->nullable();
             $table->string('status')->nullable();
