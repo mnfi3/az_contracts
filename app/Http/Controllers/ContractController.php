@@ -84,9 +84,6 @@ class ContractController extends Controller
 
 
 
-
-
-
   public function edit(Request $request){
     $id = $request->id;
     $this->validate($request, [
@@ -147,13 +144,24 @@ class ContractController extends Controller
   }
 
 
+  public function remove(Request $request){
+    $id = $request->id;
+    $contract = Contract::find($id);
+    $docs = $contract->documents;
+    foreach ($docs as $doc) {
+      $doc->delete();
+    }
+    $contract->delete();
+    return redirect(route('contracts'));
+  }
+
+
+
 
   private function upload($file){
-//      $file = $request->file('image');
     $file_path = '';
     if ($file !== null) {
-//        $file_extension = $file->getClientOriginalExtension();
-      $dir = $this->getFileDirName('files');
+      $dir = $this->getFileDirName('files/contracts');
       $name = $file->getClientOriginalName();
       $file_path = $dir . '/' . $name ;
       $file->move($dir, $name);

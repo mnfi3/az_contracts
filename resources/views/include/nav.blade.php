@@ -23,7 +23,7 @@
             <a class="nav-link" href="{{ route('report') }}">گزارش گیری</a>
           </li>
           <li class="nav-item">
-            <a class="nav-link" href="{{ route('proposals') }}">پورپوزال ها</a>
+            <a class="nav-link" href="{{ route('proposals') }}">پروپوزال ها</a>
           </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('memorandums') }}">تفاهم نامه ها</a>

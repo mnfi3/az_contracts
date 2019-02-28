@@ -9,7 +9,7 @@ class Memorandum extends Model
 {
     use SoftDeletes;
 
-    protected $fillable = ['title', 'file_path', 'date'];
+    protected $fillable = ['title', 'date'];
 
   public function documents(){
     return $this->morphMany('App\Document', 'documentable');

@@ -7,31 +7,32 @@
     </div>
     <div class="container-fluid bg-four mt-3 p-3 border-round">
       <h5 class="mt-1 mb-3">پروپوزال جدید</h5>
-      <form action="" method="post">
+      <form action="{{route('add-proposal')}}" method="post" enctype="multipart/form-data">
+          @csrf
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="fullName">نام و نام خانوادگی</label>
           <div class="col-md-3">
             <input type="text" id="fullName" required=""
-                   class="form-control" name="title">
+                   class="form-control" name="name">
           </div>
           <label class="col-md-2 text-right  col-form-label  " for="college">دانشکده مربوطه </label>
           <div class="col-md-3">
             <input type="text" id="college" required=""
-                   class="form-control" name="college">
+                   class="form-control" name="department">
           </div>
         </div>
 
         <div class="form-group row">
-          <label class="col-md-2 col-form-label " for="date">تاریخ ارایه </label>
+          <label class="col-md-2 col-form-label " for="date">تاریخ ارائه </label>
           <div class="col-md-3">
             <input type="text" id="date" required=""
                    class="form-control j-date"
-                   name="start-day">
+                   name="date">
           </div>
           <label class="col-md-2 text-right  col-form-label  " for="field">گروه مربوطه </label>
           <div class="col-md-3">
             <input type="text" id="field" required=""
-                   class="form-control" name="field">
+                   class="form-control" name="group_name">
           </div>
         </div>
         <div class="form-group row">
@@ -43,7 +44,7 @@
           <label class="col-md-2 text-right  col-form-label  " for="goalSystem">سازمان هدف</label>
           <div class="col-md-3">
             <input type="text" id="goalSystem" required=""
-                   class="form-control start-day pwt-datepicker-input-element" name="">
+                   class="form-control start-day pwt-datepicker-input-element" name="employer">
           </div>
 
         </div>
@@ -52,7 +53,7 @@
           <div class="col-md-3">
             <div id="fileInputsContainer" class="d-flex flex-column">
               <div class="d-flex">
-                <input type="file" id="documents" required=""
+                <input type="file" id="documents"
                        class="form-control-file" name="documents[]">
                 <button class="btn btn-sm btn-light" onclick="addDocumentInput()">سند جدید</button>
               </div>
@@ -82,53 +83,41 @@
           دریافت خروجی
         </button>
       </div>
-      <h5 class="py-2 ">پورپوزال ها :</h5>
+      <h5 class="py-2 ">پروپوزال ها :</h5>
       <div class="table-responsive">
         <table id="پروپوزال ها" class="table table-striped table-bordered ">
           <thead class="text-center   ">
           <tr>
             <th>ردیف</th>
             <th>نام و نام خانوادگی</th>
-            <th>ناریخ ارایه</th>
+            <th>تاریخ ارائه</th>
             <th>دانشکده مربوطه</th>
             <th>گروه مربوطه</th>
             <th>سازمان هدف</th>
             <th>عنوان پروپوزال</th>
-            <th>ویرایش</th>
+            <th>مشاهده</th>
 
           </tr>
           </thead>
           <tbody class=" text-center">
+          @php($i=0)
+          @php($date = new \App\Http\Controllers\PersianDate())
+          @foreach($proposals as $proposal)
           <tr>
-            <th scope="row">1</th>
-            <td>پویا آکلیون</td>
-            <td>1397/11/25</td>
-            <td>فناوری اطلاعات</td>
-            <td>نرم افزار</td>
-            <td>امور دانشجویی</td>
+            <th scope="row">{{++$i}}</th>
+            <td>{{$proposal->name}}</td>
+            <td>{{$date->toPersiandate($proposal->date, 'Y/m/d')}}</td>
+            <td>{{$proposal->department}}</td>
+            <td>{{$proposal->group_name}}</td>
+            <td>{{$proposal->employer}}</td>
+            <td>{{$proposal->title}}</td>
             <td>
-              پروپوزال اول
-            </td>
-            <td>
-              <a href="{{route('proposal')}}" class="btn btn-light">ویرایش</a>
+              <a href="{{route('proposal', $proposal->id)}}" class="btn btn-light">مشاهده</a>
             </td>
 
           </tr>
-          <tr>
-            <th scope="row">2</th>
-            <td>پویا آکلیون</td>
-            <td>1397/11/25</td>
-            <td>فناوری اطلاعات</td>
-            <td>نرم افزار</td>
-            <td>امور دانشجویی</td>
-            <td>
-              پروپوزال اول
-            </td>
-            <td>
-              <a href="{{route('proposal')}}" class="btn btn-light">ویرایش</a>
-            </td>
+          @endforeach
 
-          </tr>
           </tbody>
         </table>
       </div>

@@ -1,0 +1,3 @@
+admin@ezitech.ir 123456
+master@ezitech.ir 123456
+user@ezitech.ir 123456

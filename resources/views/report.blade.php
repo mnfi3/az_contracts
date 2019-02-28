@@ -11,49 +11,52 @@
         <h6 class="mb-3 ">( .توجه : حداقل باید یکی از موارد را پر کنید)</h6>
         <div class="row">
           <div class="col-md-8">
-            <form action="" method="post">
+
+            <form action="{{route('report-result')}}" method="post">
+                @csrf
               <div class="form-group row">
-                <label class="col-md-2 col-form-label" for="post-title"> عنوان قرارداد</label>
+                <label class="col-md-2 col-form-label" for="post-title">متن مورد نظر</label>
                 <div class="col-md-4">
-                  <input type="text" id="post-title" required="" placeholder="نام سند مورد نظر را وارد کنید"
-                         class="form-control" name="title">
+                  <input type="text" id="post-title"  placeholder="متن مورد نظر را وارد کنید"
+                         class="form-control" name="text" @if(!is_null($text)) value="{{$text}}" @endif>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-2 col-form-label" for="post-title"> دسته بندی سند</label>
                 <div class="col-md-4">
-                  <select required="" class="form-control" name="category-id"
+                  <select required="" class="form-control" name="category_id"
                           style="font-weight: bold; min-height: 40px">
-                    <option value="1">همه اسناد</option>
-                    <option value="2">قرارداد</option>
-                    <option value="3">تفاهم نامه</option>
-                    <option value="4">پروپوزال</option>
+                    <option value="1"@if($category_id == 1) selected @endif>همه اسناد</option>
+                    <option value="2"@if($category_id == 2) selected @endif>قرارداد</option>
+                    <option value="3"@if($category_id == 3) selected @endif>تفاهم نامه</option>
+                    <option value="4"@if($category_id == 4) selected @endif>پروپوزال</option>
                   </select>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-md-2 col-form-label " for="duration"> از تاریخ :</label>
                 <div class="col-md-4">
-                  <input type="text" id="duration" required=""
+                  <input type="text" id="duration"
                          class="form-control j-date"
-                         name="start-day">
+                         name="from_date" @if(!is_null($from_date)) value="{{$from_date}}" @endif>
                 </div>
                 <label class="col-md-2 col-form-label  " for="duration2"> تا تاریخ :</label>
                 <div class="col-md-4">
-                  <input type="text" id="duration2" required=""
-                         class="form-control j-date" name="finish-day">
+                  <input type="text" id="duration2"
+                         class="form-control j-date"
+                         name="to_date" @if(!is_null($to_date)) value="{{$to_date}}" @endif>
                 </div>
               </div>
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label  " for="price"> از مبلغ :</label>
                 <div class="col-sm-4">
-                  <input type="text" id="price" required="" class="form-control" placeholder="به ریال"
-                         name="start-price">
+                  <input type="text" id="price"  class="form-control" placeholder="به ریال"
+                         name="from_price" @if(!is_null($from_price)) value="{{$from_price}}" @endif>
                 </div>
                 <label class="col-sm-2 col-form-label  " for="price2"> تا مبلغ :</label>
                 <div class="col-sm-4">
-                  <input type="text" id="price2" required="" placeholder="به ریال" class="form-control "
-                         name="last-price">
+                  <input type="text" id="price2"  placeholder="به ریال" class="form-control "
+                         name="to_price" @if(!is_null($to_price)) value="{{$to_price}}" @endif>
                 </div>
               </div>
 
@@ -64,6 +67,9 @@
                 </div>
               </div>
             </form>
+
+
+
           </div>
         </div>
       </div>
@@ -74,7 +80,9 @@
     <section id="results">
       <div class="container-fluid mt-2 mb-5 p-3 bg-white border-round">
         <div class="d-flex  ">
-          <h5 class="pt-2"> نتیجه جستوجو : 12 مورد یافت شد </h5>
+            @if(count($contracts) > 0)
+                <h5 class="pt-2"> نتیجه جستجو : {{count($contracts)}} مورد یافت شد </h5>
+            @endif
           <button  class="btn btn-app ml-auto" onclick="excelReport(this)">
             <i class="fal fa-file-excel"></i>
             دریافت خروجی
@@ -100,30 +108,39 @@
               <th>تاریخ خاتمه قرارداد</th>
               <th>مشارکتی/انفرادی</th>
               <th>مبلغ طرح</th>
-              <th>ویرایش</th>
+              <th>وضعیت</th>
+              <th>مشاهده</th>
             </tr>
             </thead>
-            <tbody class=" text-center">
-            <tr>
-              <th scope="row">1</th>
-              <td>پیاده سازی نرم افزار کلود</td>
-              <td>98668</td>
-              <td>154894</td>
-              <td>سازمانی</td>
-              <td>بویر</td>
-              <td>عباسی مهر</td>
-              <td>فناوری اطلاعات</td>
-              <td>نرم افزار</td>
-              <td>97/12/25</td>
-              <td>یک سال</td>
-              <td>98/12/25</td>
-              <td>انفرادی</td>
-              <td>45،000،000</td>
-              <td>
-                <a href="{{route('contract')}}" class="btn btn-light">ویرایش</a>
-              </td>
+            <tbody class="text-center">
 
-            </tr>
+            @if(count($contracts) > 0)
+                @php($i=0)
+                @php($date = new \App\Http\Controllers\PersianDate())
+                @foreach($contracts as $contract)
+                    <tr>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$contract->name}}</td>
+                        <td>{{$contract->ext_no}}</td>
+                        <td>{{$contract->int_no}}</td>
+                        <td>{{$contract->type}}</td>
+                        <td>{{$contract->employer}}</td>
+                        <td>{{$contract->executer}}</td>
+                        <td>{{$contract->department}}</td>
+                        <td>{{$contract->group_name}}</td>
+                        <td>{{$date->toPersiandate($contract->start_date, 'Y-m-d')}}</td>
+                        <td>{{$contract->duration}}</td>
+                        <td>{{$date->toPersiandate($contract->finish_date, 'Y-m-d')}}</td>
+                        <td>{{$contract->participation}}</td>
+                        <td>{{number_format($contract->cost)}}</td>
+                        <td>{{$contract->status}}</td>
+                        <td>
+                            <a href="{{route('contract', $contract->id)}}" class="btn btn-light">مشاهده</a>
+                        </td>
+                    </tr>
+                @endforeach
+            @endif
+
 
             </tbody>
 
@@ -133,7 +150,9 @@
 
       <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
         <div class="d-flex">
-          <h5 class="pt-2"> نتیجه جستوجو : 12 مورد یافت شد </h5>
+            @if(count($memorandums) > 0)
+                <h5 class="pt-2"> نتیجه جستجو : {{count($memorandums)}} مورد یافت شد </h5>
+            @endif
           <button  onclick="excelReport(this)" class="btn btn-app ml-auto">
             <i class="fal fa-file-excel"></i>
             دریافت خروجی
@@ -146,38 +165,29 @@
             <tr>
               <th>ردیف</th>
               <th>موضوع</th>
-              <th>ناریخ ارایه</th>
-              <th>ویرایش</th>
+              <th>تاریخ ارائه</th>
+              <th>مشاهده</th>
 
             </tr>
             </thead>
             <tbody class=" text-center">
-            <tr>
-              <th scope="row">1</th>
-              <td>تفاهم یکم</td>
-              <td>1397/12/25</td>
-              <td>
-                <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
-              </td>
 
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>تفاهم دوم</td>
-              <td>1397/12/25</td>
-              <td>
-                <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
-              </td>
+            @if(count($memorandums) > 0)
+                @php($i=0)
+                @php($date = new \App\Http\Controllers\PersianDate())
+                @foreach($memorandums as $memorandum)
+                    <tr>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$memorandum->title}}</td>
+                        <td>{{$date->toPersiandate($memorandum->date, 'Y-m-d')}}</td>
+                        <td>
+                            <a href="{{route('memorandum', $memorandum->id)}}" class="btn btn-light">مشاهده</a>
+                        </td>
+                    </tr>
+                @endforeach
+             @endif
 
-            </tr>
-            <tr>
-              <th scope="row">1</th>
-              <td>تفاهم سوم</td>
-              <td>1397/12/25</td>
-              <td>
-                <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
-              </td>
-            </tr>
+
             </tbody>
           </table>
         </div>
@@ -185,59 +195,54 @@
 
       <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
         <div class="d-flex">
-          <h5 class="pt-2"> نتیجه جستوجو : 12 مورد یافت شد </h5>
+            @if(count($proposals) > 0)
+                <h5 class="pt-2"> نتیجه جستجو : {{count($proposals)}} مورد یافت شد </h5>
+            @endif
         <button class="btn btn-app ml-auto" onclick="excelReport(this)">
           <i class="fal fa-file-excel"></i>
           دریافت خروجی
         </button>
         </div>
-        <h5 class="py-2 ">پورپوزال ها :</h5>
+        <h5 class="py-2 ">پروپوزال ها :</h5>
         <div class="table-responsive">
           <table id="پروپوزال ها-جستجو" class="table table-striped table-bordered ">
             <thead class="text-center   ">
             <tr>
               <th>ردیف</th>
               <th>نام و نام خانوادگی</th>
-              <th>ناریخ ارایه</th>
+              <th>تاریخ ارائه</th>
               <th>دانشکده مربوطه</th>
               <th>گروه مربوطه</th>
               <th>سازمان هدف</th>
               <th>عنوان پروپوزال</th>
-              <th>ویرایش</th>
+              <th>مشاهده</th>
 
             </tr>
             </thead>
             <tbody class=" text-center">
-            <tr>
-              <th scope="row">1</th>
-              <td>پویا آکلیون</td>
-              <td>1397/11/25</td>
-              <td>فناوری اطلاعات</td>
-              <td>نرم افزار</td>
-              <td>امور دانشجویی</td>
-              <td>
-                 پروپوزال اول
-              </td>
-              <td>
-                <a href="{{route('proposal')}}" class="btn btn-light">ویرایش</a>
-              </td>
 
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>پویا آکلیون</td>
-              <td>1397/11/25</td>
-              <td>فناوری اطلاعات</td>
-              <td>نرم افزار</td>
-              <td>امور دانشجویی</td>
-              <td>
-                پروپوزال اول
-              </td>
-              <td>
-                <a href="{{route('proposal')}}" class="btn btn-light">ویرایش</a>
-              </td>
+            @if(count($proposals) > 0)
+                {{--@php(print_r($proposals))--}}
+                {{--@php(exit())--}}
+                @php($i=0)
+                @php($date = new \App\Http\Controllers\PersianDate())
+                @foreach($proposals as $proposal)
+                    <tr>
+                        <th scope="row">{{++$i}}</th>
+                        <td>{{$proposal->name}}</td>
+                        <td>{{$date->toPersiandate($proposal->date, 'Y-m-d')}}</td>
+                        <td>{{$proposal->department}}</td>
+                        <td>{{$proposal->group_name}}</td>
+                        <td>{{$proposal->employer}}</td>
+                        <td>{{$proposal->title}}</td>
+                        <td>
+                            <a href="{{route('proposal', $proposal->id)}}" class="btn btn-light">مشاهده</a>
+                        </td>
 
-            </tr>
+                    </tr>
+                @endforeach
+            @endif
+
 
             </tbody>
           </table>

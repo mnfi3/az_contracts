@@ -8,7 +8,8 @@
     <div class="container-fluid bg-four mt-3 p-3 border-round">
       <h5 class="mt-1 mb-3">تفاهم نامه جدید</h5>
 
-      <form action="" method="post">
+      <form action="{{route('add-memorandum')}}" method="post" enctype="multipart/form-data">
+          @csrf
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="fullName">موضوع</label>
           <div class="col-md-3">
@@ -18,11 +19,11 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-md-2 col-form-label " for="date">تاریخ ارایه </label>
+          <label class="col-md-2 col-form-label " for="date">تاریخ ارائه </label>
           <div class="col-md-3">
             <input type="text" id="date" required=""
                    class="form-control j-date"
-                   name="start_day">
+                   name="date">
           </div>
         </div>
         <div class="row">
@@ -66,39 +67,29 @@
           <tr>
             <th>ردیف</th>
             <th>موضوع</th>
-            <th>ناریخ ارایه</th>
-            <th>ویرایش</th>
+            <th>تاریخ ارائه</th>
+            <th>مشاهده</th>
 
           </tr>
           </thead>
           <tbody class=" text-center">
+
+          @php($i=0)
+          @php($date = new \App\Http\Controllers\PersianDate())
+          @foreach($memorandums as $memorandum)
           <tr>
-            <th scope="row">1</th>
-            <td>تفاهم نامه یکم</td>
-            <td>1397/4/15</td>
+            <th scope="row">{{++$i}}</th>
+            <td>{{$memorandum->title}}</td>
+            <td>{{$date->toPersiandate($memorandum->date, 'Y/m/d')}}</td>
             <td>
-              <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
+              <a href="{{route('memorandum', $memorandum->id)}}" class="btn btn-light">مشاهده</a>
             </td>
 
           </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>تفاهم نامه دوم</td>
-            <td>1397/4/15</td>
-            <td>
-              <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
-            </td>
+          @endforeach
 
-          </tr>
-          <tr>
-            <th scope="row">1</th>
-            <td>تفاهم نامه سوم</td>
-            <td>1385/4/05</td>
-            <td>
-              <a href="{{route('memorandum')}}" class="btn btn-light">ویرایش</a>
-            </td>
 
-          </tr>
+
           </tbody>
         </table>
       </div>

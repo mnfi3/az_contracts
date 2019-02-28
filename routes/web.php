@@ -25,38 +25,40 @@ Route::get('/home', 'AdminController@panel')->name('home');
 
 Route::post('/change-password', 'AdminController@changePassword')->name('change-password');
 Route::post('/add-user', 'AdminController@addUser')->name('add-user');
+Route::get('report', 'AdminController@report')->name('report');
+Route::post('report-result', 'AdminController@reportResult')->name('report-result');
+
+
+
+Route::post('remove-document', 'DocumentController@remove')->name('remove-document');
 
 
 Route::get('contracts', 'ContractController@contracts')->name('contracts');
 Route::post('add-contract', 'ContractController@addContract')->name('add-contract');
 Route::get('contract/{id}', 'ContractController@contract')->name('contract');
 Route::post('edit-contract', 'ContractController@edit')->name('edit-contract');
-
-
-Route::post('remove-document', 'DocumentController@remove')->name('remove-document');
-
+Route::post('remove-contract', 'ContractController@remove')->name('remove-contract');
 
 
 
+Route::get('memorandums', 'MemorandumController@memorandums')->name('memorandums');
+Route::get('memorandum/{id}', 'MemorandumController@memorandum')->name('memorandum');
+Route::post('add-memorandum', 'MemorandumController@add')->name('add-memorandum');
+Route::post('edit-memorandum', 'MemorandumController@edit')->name('edit-memorandum');
+Route::post('remove-memorandum', 'MemorandumController@remove')->name('remove-memorandum');
 
-Route::get('report',function(){
-  return view('report');
-})->name('report');
 
-Route::get('proposals',function(){
-  return view('proposals');
-})->name('proposals');
 
-Route::get('proposal',function(){
-  return view('proposal');
-})->name('proposal');
+Route::get('proposals', 'ProposalController@proposals')->name('proposals');
+Route::get('proposal/{id}', 'ProposalController@proposal')->name('proposal');
+Route::post('add-proposal', 'ProposalController@add')->name('add-proposal');
+Route::post('edit-proposal', 'ProposalController@edit')->name('edit-proposal');
+Route::post('remove-proposal', 'ProposalController@remove')->name('remove-proposal');
 
-Route::get('memorandums',function (){
-  return view('memorandums');
-})->name('memorandums');
 
-Route::get('memorandum',function (){
-  return view('memorandum');
-})->name('memorandum');
+
+
+
+
 
 

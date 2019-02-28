@@ -171,9 +171,10 @@
     <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
       <div class="d-flex mb-2">
         <h5 class="py-2 ">محتوای قرارداد :</h5>
-        <form class="form-inline ml-auto" action="" method="POST"
+        <form class="form-inline ml-auto" action="{{route('remove-contract')}}" method="POST"
               onsubmit="return confirm('آیا از حذف قرارداد مطمئن هستید؟')">
           @csrf
+            <input type="hidden" name="id" value="{{$contract->id}}">
           <button type="submit" class="btn btn-app ml-auto">
             <i class="fal fa-times"></i>
             حذف قرارداد
@@ -186,7 +187,6 @@
 
           <thead class="text-center   ">
           <tr>
-              <th>ردیف</th>
               <th>عنوان طرح</th>
               <th>شماره قرارداد بیرونی</th>
               <th>شماره قرارداد داخلی</th>
@@ -206,7 +206,6 @@
           <tbody class=" text-center">
           @php($date = new \App\Http\Controllers\PersianDate())
           <tr>
-            <th scope="row">1</th>
             <td>{{$contract->name}}</td>
             <td>{{$contract->ext_no}}</td>
             <td>{{$contract->int_no}}</td>

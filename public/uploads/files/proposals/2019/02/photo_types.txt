@@ -1,0 +1,2 @@
+app_cover		site_cover
+app_main		site_main
