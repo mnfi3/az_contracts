@@ -50,12 +50,12 @@
               <div class="form-group row">
                 <label class="col-sm-2 col-form-label  " for="price"> از مبلغ :</label>
                 <div class="col-sm-4">
-                  <input type="text" id="price"  class="form-control" placeholder="به ریال"
+                  <input type="number" id="price"  class="form-control" placeholder="به ریال"
                          name="from_price" @if(!is_null($from_price)) value="{{$from_price}}" @endif>
                 </div>
                 <label class="col-sm-2 col-form-label  " for="price2"> تا مبلغ :</label>
                 <div class="col-sm-4">
-                  <input type="text" id="price2"  placeholder="به ریال" class="form-control "
+                  <input type="number" id="price2"  placeholder="به ریال" class="form-control "
                          name="to_price" @if(!is_null($to_price)) value="{{$to_price}}" @endif>
                 </div>
               </div>

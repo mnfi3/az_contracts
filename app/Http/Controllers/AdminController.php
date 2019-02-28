@@ -132,7 +132,8 @@ class AdminController extends Controller
           or department like '%$text%'
           or group_name like '%$text%'
           or status like '%$text%'
-          or participation like '%$text%'");
+          or participation like '%$text%' 
+          and deleted_at is null");
 
         $contracts = $this->push($contracts, $contracts1);
       }
@@ -141,11 +142,13 @@ class AdminController extends Controller
       if(!is_null($from_date) && !is_null($to_date)){
         $contracts1 = DB::select("
           select * from contracts
-          where start_date between '$from_date' and '$to_date'");
+          where start_date between '$from_date' and '$to_date'
+          and deleted_at is null");
 
         $contracts2 = DB::select("
           select * from contracts
-          where finish_date between '$from_date' and '$to_date'");
+          where finish_date between '$from_date' and '$to_date'
+          and deleted_at is null");
 
         $contracts = $this->push($contracts, $contracts1);
         $contracts = $this->push($contracts, $contracts2);
@@ -155,7 +158,8 @@ class AdminController extends Controller
       if(!is_null($from_price) && !is_null($to_price)){
         $contracts1 = DB::select("
           select * from contracts
-          where cost between '$from_price' and '$to_price'");
+          where cost between '$from_price' and '$to_price'
+          and deleted_at is null");
 
         $contracts = $this->push($contracts, $contracts1);
       }
@@ -175,7 +179,8 @@ class AdminController extends Controller
       if (!is_null($text)) {
         $memorandums1 = DB::select("
           select * from memoranda
-          where title like '%$text%'");
+          where title like '%$text%'
+          and deleted_at is null");
 
         $memorandums = $this->push($memorandums, $memorandums1);
       }
@@ -184,7 +189,8 @@ class AdminController extends Controller
       if(!is_null($from_date) && !is_null($to_date)){
         $memorandums1 = DB::select("
           select * from memoranda
-          where date BETWEEN '$from_date' and '$to_date'");
+          where date BETWEEN '$from_date' and '$to_date'
+          and deleted_at is null");
 
         $memorandums = $this->push($memorandums, $memorandums1);
       }
@@ -209,14 +215,16 @@ class AdminController extends Controller
           or title like '%$text%'
           or department like '%$text%'
           or group_name like '%$text%'
-          or employer like '%$text%'");
+          or employer like '%$text%'
+          and deleted_at is null");
 
         $proposals = $this->push($proposals, $proposals1);
       }
 
       if(!is_null($from_date) && !is_null($to_date)){
         $proposals1 = DB::select("select * from proposals
-        where date BETWEEN '$from_date' and '$to_date'");
+        where date BETWEEN '$from_date' and '$to_date'
+        and deleted_at is null");
         $proposals = $this->push($proposals, $proposals1);
       }
 
