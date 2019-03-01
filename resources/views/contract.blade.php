@@ -136,10 +136,10 @@
 
   <section id="proposalDocuments">
     <div class="d-flex justify-content-between">
-      <h4 class="mt-4">اسناد {{$contract->name}}</h4>
+      <h4 class="mt-4">اسناد </h4>
     </div>
     <div class="container-fluid bg-four mt-3 p-3 border-round">
-      <h5 class="mt-1 mb-3">ویرایش اسناد {{$contract->name}}</h5>
+      <h5 class="mt-1 mb-3">ویرایش اسناد </h5>
       <div class="col-md-4">
         <div class="d-flex flex-column">
 
@@ -167,7 +167,7 @@
   </section>
 
   <section id="allProposal">
-    <h4 class="my-3">{{$contract->name}}</h4>
+    {{--<h4 class="my-3">{{$contract->name}}</h4>--}}
     <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
       <div class="d-flex mb-2">
         <h5 class="py-2 ">محتوای قرارداد :</h5>

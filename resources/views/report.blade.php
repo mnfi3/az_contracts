@@ -8,7 +8,7 @@
       </div>
       <div class="container-fluid bg-four mt-2 p-3 " style="border-radius: 1rem;">
 
-        <h6 class="mb-3 ">( .توجه : حداقل باید یکی از موارد را پر کنید)</h6>
+        <h6 class="mb-3 ">(توجه : حداقل باید یکی از موارد را پر کنید)</h6>
         <div class="row">
           <div class="col-md-8">
 

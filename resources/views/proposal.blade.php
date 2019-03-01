@@ -112,10 +112,10 @@
     </div>
   </section>
   <section id="allProposal">
-    <h4 class="my-3">{{$proposal->title}}</h4>
+{{--    <h4 class="my-3">{{$proposal->title}}</h4>--}}
     <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
       <div class="d-flex mb-2">
-        <h5 class="py-2 ">محتوای پورپوزال :</h5>
+        <h5 class="py-2 ">محتوای پروپوزال :</h5>
         <form class="form-inline ml-auto" action="{{route('remove-proposal')}}" method="POST"
               onsubmit="return confirm('آیا از حذف پروپوزال مطمئن هستید؟')">
           @csrf

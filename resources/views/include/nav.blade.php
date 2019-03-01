@@ -34,10 +34,10 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">پنل مدیریت</a>
           </li>
-          <li class="nav-item">
-            <span class="nav-link">{{ Auth::user()->name }}</span>
+          {{--<li class="nav-item">--}}
+            {{--<span class="nav-link">{{ Auth::user()->name }}</span>--}}
 
-          </li>
+          {{--</li>--}}
 
           <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
             @csrf
