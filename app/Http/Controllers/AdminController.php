@@ -2,18 +2,123 @@
 
 namespace App\Http\Controllers;
 
+use App\Contract;
 use App\Proposal;
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\DB;
 use Illuminate\Support\Facades\Hash;
+use Maatwebsite\Excel\Facades\Excel;
+
 
 class AdminController extends Controller
 {
     public function __construct() {
       $this->middleware('auth');
     }
+
+
+    public function import(){
+
+      $data = Excel::load('contracts.xlsx', 'UTF-8')->get();
+
+      if($data->count()){
+        $data = json_encode($data, JSON_UNESCAPED_UNICODE);
+        $data = json_decode($data);
+        foreach ($data as $item) {
+          if (is_null($item->r)) continue;
+
+          $cost = $item->cost;
+          if (is_null($cost)) $cost = 0;
+          else $cost = preg_replace("/[^0-9]/", "", $cost );
+          if (!is_numeric($cost)) $cost = 0;
+          $participation = $item->participation;
+          $status = $item->status;
+          if(!is_string($status)) $status = null;
+          $department = $item->department;
+          $group_name = $item->group_name;
+          $executer = $item->executer;
+          if(is_null($executer)) $executer = ' ';
+          $employer = $item->employer;
+          if(is_null($employer)) $employer = ' ';
+          $type = $item->type;
+          $int_no = $item->int_no;
+          if(!is_string($int_no)) $int_no = null;
+          $ext_no = $item->ext_no;
+          if(!is_string($ext_no)) $ext_no = null;
+          $name = $item->name;
+          if(is_null($name)) $name = ' ';
+
+          $contract = Contract::create([
+            'cost' => $cost,
+            'participation' => $participation,
+            'status' => $status,
+            'department' => $department,
+            'group_name' => $group_name,
+            'executer' => $executer,
+            'employer' => $employer,
+            'type' => $type,
+            'int_no' => $int_no,
+            'ext_no' => $ext_no,
+            'name' => $name,
+          ]);
+        }
+      }
+    }
+
+
+  public function import2(){
+
+    $data = Excel::load('proposals.xlsx', 'UTF-8')->get();
+
+    if($data->count()){
+      $data = json_encode($data, JSON_UNESCAPED_UNICODE);
+      $data = json_decode($data);
+      foreach ($data as $item) {
+        if (is_null($item->name) || is_null($item->employer)) continue;
+
+        $name = $item->name;
+        $title = $item->title;
+        $department = $item->department;
+        $group_name = $item->group_name;
+        $employer = $item->employer;
+        $date = $item->date;
+        if(strlen($date < 2)){
+          $date = null;
+        }else{
+          $date = '01/01/' . $date;
+          $p_date = new PersianDate();
+          $date = $p_date->toGregorianDate($date);
+        }
+
+        $proposal = Proposal::create([
+          'name' => $name,
+          'title' => $title,
+          'department' => $department,
+          'group_name' => $group_name,
+          'employer' => $employer,
+          'date' => $date,
+        ]);
+      }
+    }
+  }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
 
 
     public function panel(){

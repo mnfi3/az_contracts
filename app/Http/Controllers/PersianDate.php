@@ -112,6 +112,7 @@ class PersianDate {
 
   function toPersiandate($g_date, $input)
   {
+    if (strlen($g_date) < 2) return null;
     $g_date=str_replace('-','',$g_date);
     $g_date=str_replace('/','',$g_date);
 
@@ -163,6 +164,7 @@ class PersianDate {
 
   public function toGregorianDate($j_date)
   {
+    if (strlen($j_date) < 2) return null;
     $parts = explode('/', $j_date);
     $parts = array_reverse($parts);
     $j_date = implode('/', $parts);

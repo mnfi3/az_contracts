@@ -2,6 +2,11 @@
 
 
 
+//Route::get('/import', 'AdminController@import');
+//Route::get('/import2', 'AdminController@import2');
+
+
+
 
 Route::get('/', function () {
   return redirect(route('login'));
