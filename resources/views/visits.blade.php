@@ -111,7 +111,7 @@
                     <tr>
                         <th scope="row">{{++$i}}</th>
                         <td>{{$date->toPersiandate($visit->date,'Y/m/d')}}</td>
-                        <td>{{$visit->place}}</td>
+                        <td><a href="{{route('visit', $visit->id)}}">{{$visit->place}}</a></td>
                         <td>{{$visit->organization_boss}}</td>
                         <td>{{$visit->phones}}+</td>
                         <td>{{$visit->members}}</td>
