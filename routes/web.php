@@ -36,6 +36,7 @@ Route::post('report-result', 'AdminController@reportResult')->name('report-resul
 
 
 Route::post('remove-document', 'DocumentController@remove')->name('remove-document');
+Route::post('remove-photo', 'PhotoController@remove')->name('remove-photo');
 
 
 Route::get('contracts', 'ContractController@contracts')->name('contracts');
@@ -59,6 +60,14 @@ Route::get('proposal/{id}', 'ProposalController@proposal')->name('proposal');
 Route::post('add-proposal', 'ProposalController@add')->name('add-proposal');
 Route::post('edit-proposal', 'ProposalController@edit')->name('edit-proposal');
 Route::post('remove-proposal', 'ProposalController@remove')->name('remove-proposal');
+
+
+
+Route::get('visits', 'VisitController@visits')->name('visits');
+Route::get('visit/{id}', 'VisitController@visit')->name('visit');
+Route::post('add-visit', 'VisitController@add')->name('add-visit');
+Route::post('edit-visit', 'VisitController@edit')->name('edit-visit');
+Route::post('remove-visit', 'VisitController@remove')->name('remove-visit');
 
 
 

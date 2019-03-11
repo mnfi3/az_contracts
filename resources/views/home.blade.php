@@ -50,6 +50,19 @@
               <a href="{{route('report')}}" class="card-footer">ورود</a>
             </div>
           </div>
+
+            <div class="col-md-3 mt-2">
+                <div class="card text-center bg-three text-white">
+                    <div class="card-body">
+                        <h3 class="pb-3">بازدید ها</h3>
+                        <h2 class="display-3">
+                            <i class="fal fa-eye"></i>
+                        </h2>
+                    </div>
+                    <a href="{{route('visits')}}" class="card-footer">ورود</a>
+                </div>
+            </div>
+
         </div>
       </div>
     </section>

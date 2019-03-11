@@ -37,6 +37,8 @@ class MemorandumController extends Controller
       $memorandum = Memorandum::create([
         'title' => $request->title,
         'date' => $date,
+        'organization' => $request->organization,
+        'number' => $request->number,
       ]);
 
 
@@ -72,6 +74,8 @@ class MemorandumController extends Controller
       $memorandum = Memorandum::find($id);
       $memorandum->title = $request->title;
       $memorandum->date = $date;
+      $memorandum->organization = $request->organization;
+      $memorandum->number = $request->number;
       $memorandum->save();
 
       $files = $request->file('documents');

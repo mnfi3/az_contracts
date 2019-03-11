@@ -43,6 +43,9 @@ class ProposalController extends Controller
         'group_name' => $request->group_name,
         'title' => $request->title,
         'employer' => $request->employer,
+        'is_success' => $request->is_success,
+        'partners' => $request->partners,
+        'type' => $request->type,
       ]);
 
       $files = $request->file('documents');
@@ -84,6 +87,9 @@ class ProposalController extends Controller
       $proposal->group_name = $request->group_name;
       $proposal->title = $request->title;
       $proposal->employer = $request->employer;
+      $proposal->is_success = $request->is_success;
+      $proposal->partners = $request->partners;
+      $proposal->type = $request->type;
       $proposal->save();
 
 

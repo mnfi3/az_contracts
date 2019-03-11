@@ -18,7 +18,7 @@
           <form action="{{route('edit-proposal')}}" method="post" enctype="multipart/form-data">
               @csrf
             <div class="form-group row">
-              <label class="col-md-2 col-form-label" for="fullName">نام و نام خانوادگی</label>
+              <label class="col-md-2 col-form-label" for="fullName">مجری</label>
               <div class="col-md-4">
                 <input type="text" id="fullName" required="" value="{{$proposal->name}}"
                        class="form-control" name="name">
@@ -57,6 +57,36 @@
               </div>
 
             </div>
+
+              <div class="form-group row">
+                  <label class="col-md-2 col-form-label" for="isBecomeContract">منجر به عقد قرارداد شده است؟</label>
+                  <div class="col-md-4">
+                      <select name="is_success" id="isBecomeContract" class="form-control">
+                          <option value="1" @if($proposal->is_success == 1) selected @endif>بلی</option>
+                          <option value="0" @if($proposal->is_success == 0) selected @endif>خیر</option>
+                      </select>
+
+                  </div>
+                  <label class="col-md-2 text-right  col-form-label  " for="type">نوع پروپوزال</label>
+                  <div class="col-md-4">
+                      <select name="type" id="type" class="form-control">
+                          <option value=""></option>
+                          <option value="پایان نامه" @if($proposal->type == 'پایان نامه') selected @endif>پایان نامه</option>
+                          <option value="طرح"  @if($proposal->type == 'طرح') selected @endif>طرح</option>
+                      </select>
+
+                  </div>
+
+              </div>
+              <div class="form-group row">
+                  <label class="col-md-2 col-form-label" for="colleges">همکاران پروپوزال</label>
+                  <div class="col-md-4">
+                      <textarea name="partners" id="colleges"  rows="2" class="form-control">{{$proposal->partners}}</textarea>
+                  </div>
+              </div>
+
+
+
             <div class="row">
               <label class="col-md-2 col-form-label  " for="documents">سند</label>
               <div class="col-md-4">
@@ -131,12 +161,15 @@
         <table class="table table-striped table-bordered ">
           <thead class="text-center   ">
           <tr>
-            <th>نام و نام خانوادگی</th>
-            <th>تاریخ ارائه</th>
-            <th>دانشکده مربوطه</th>
-            <th>گروه مربوطه</th>
-            <th>سازمان هدف</th>
-            <th>عنوان پروپوزال</th>
+            <th class="text-center">مجری</th>
+            <th class="text-center">تاریخ ارائه</th>
+            <th class="text-center">دانشکده مربوطه</th>
+            <th class="text-center">گروه مربوطه</th>
+            <th class="text-center">سازمان هدف</th>
+            <th class="text-center">عنوان پروپوزال</th>
+            <th class="text-center">منجر به عقد قرارداد شده؟</th>
+            <th class="text-center">نوع پروپوزال</th>
+            <th class="text-center">همکاران پروپوزال</th>
 
           </tr>
           </thead>
@@ -149,6 +182,14 @@
             <td>{{$proposal->group_name}}</td>
             <td>{{$proposal->employer}}</td>
             <td>{{$proposal->title}} </td>
+              @if($proposal->is_success == 1)
+                <td>بله</td>
+              @else
+                <td>خیر</td>
+              @endif
+              <td>{{$proposal->type}} </td>
+              <td>{{$proposal->partners}} </td>
+
           </tr>
           </tbody>
         </table>

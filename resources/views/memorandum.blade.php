@@ -25,13 +25,35 @@
                         </div>
 
                         <div class="form-group row">
-                            <label class="col-md-2 col-form-label " for="date">تاریخ ارائه </label>
+                            <label class="col-md-2 col-form-label " for="date">تاریخ عقد </label>
                             <div class="col-md-6">
                                 <input type="text" id="date" required=""  value="{{$memorandum->date}}"
                                        class="form-control j-date"
                                        name="date">
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="organization">سازمان طرف قرارداد تفاهم نامه</label>
+                            <div class="col-md-6">
+                                <select name="organization" class="form-control">
+                                    <option value=""></option>
+                                    <option value="خصوصی" @if($memorandum->organization == 'خصوصی') selected @endif>خصوصی</option>
+                                    <option value="دولتی" @if($memorandum->organization == 'دولتی') selected @endif>دولتی</option>
+                                    <option value="ملی" @if($memorandum->organization == 'ملی') selected @endif>ملی</option>
+                                    <option value="بین المللی" @if($memorandum->organization == 'بین المللی') selected @endif>بین المللی</option>
+                                </select>
+                            </div>
+                        </div>
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="number">شماره تفاهم نامه</label>
+                            <div class="col-md-6">
+                                <input type="number" id="number"
+                                       class="form-control" name="number" value="{{$memorandum->number}}">
+                            </div>
+                        </div>
+
+
                         <div class="row">
                             <label class="col-md-2 col-form-label  " for="documents">سند</label>
                             <div class="col-md-6">
@@ -103,8 +125,10 @@
                 <table class="table table-striped table-bordered ">
                     <thead class="text-center   ">
                     <tr>
-                        <th>موضوع</th>
-                        <th>تاریخ ارائه</th>
+                        <th class="text-center">موضوع</th>
+                        <th class="text-center">تاریخ عقد</th>
+                        <th class="text-center">سازمان طرف قرارداد تفاهم نامه</th>
+                        <th class="text-center">شماره تفاهم نامه</th>
                     </tr>
                     </thead>
                     <tbody class=" text-center">
@@ -112,6 +136,8 @@
                     <tr>
                         <td>{{$memorandum->title}}</td>
                         <td>{{$date->toPersiandate($memorandum->date, 'Y/m/d')}}</td>
+                        <td>{{$memorandum->organization}}</td>
+                        <td>{{$memorandum->number}}</td>
                     </tr>
                     </tbody>
                 </table>

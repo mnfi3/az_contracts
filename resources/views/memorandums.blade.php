@@ -19,13 +19,34 @@
         </div>
 
         <div class="form-group row">
-          <label class="col-md-2 col-form-label " for="date">تاریخ ارائه </label>
+          <label class="col-md-2 col-form-label " for="date">تاریخ عقد </label>
           <div class="col-md-3">
             <input type="text" id="date" required=""
                    class="form-control j-date"
                    name="date">
           </div>
         </div>
+
+          <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="organization">سازمان طرف قرارداد تفاهم نامه</label>
+              <div class="col-md-3">
+                  <select name="organization" class="form-control" >
+                      <option value=""></option>
+                      <option value="خصوصی">خصوصی</option>
+                      <option value="دولتی">دولتی</option>
+                      <option value="ملی">ملی</option>
+                      <option value="بین المللی">بین المللی</option>
+                  </select>
+              </div>
+          </div>
+          <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="number">شماره تفاهم نامه</label>
+              <div class="col-md-3">
+                  <input type="number" id="number"
+                         class="form-control" name="number">
+              </div>
+          </div>
+
         <div class="row">
           <label class="col-md-2 col-form-label  " for="documents">سند</label>
           <div class="col-md-3">
@@ -65,10 +86,12 @@
         <table id="تفاهم نامه ها" class="table table-striped table-bordered ">
           <thead class="text-center   ">
           <tr>
-            <th>ردیف</th>
-            <th>موضوع</th>
-            <th>تاریخ ارائه</th>
-            <th>مشاهده</th>
+            <th class="text-center">ردیف</th>
+            <th class="text-center">موضوع</th>
+            <th class="text-center">تاریخ عقد</th>
+            <th class="text-center">سازمان طرف قرارداد تفاهم نامه</th>
+            <th class="text-center">شماره تفاهم نامه</th>
+            <th class="text-center">مشاهده</th>
 
           </tr>
           </thead>
@@ -79,8 +102,10 @@
           @foreach($memorandums as $memorandum)
           <tr>
             <th scope="row">{{++$i}}</th>
-            <td>{{$memorandum->title}}</td>
+            <td><a href="{{route('memorandum', $memorandum->id)}}">{{$memorandum->title}}</a></td>
             <td>{{$date->toPersiandate($memorandum->date, 'Y/m/d')}}</td>
+              <td>{{$memorandum->organization}}</td>
+              <td>{{$memorandum->number}}</td>
             <td>
               <a href="{{route('memorandum', $memorandum->id)}}" class="btn btn-light">مشاهده</a>
             </td>

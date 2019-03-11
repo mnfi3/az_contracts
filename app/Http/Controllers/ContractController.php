@@ -27,6 +27,7 @@ class ContractController extends Controller
       'type' => 'required|string|max:250',
       'employer' => 'required|string|max:250',
       'executer' => 'required|string|max:250',
+      'partners' => 'required|string|max:250',
       'department' => 'required|string|max:250',
       'group_name' => 'required|string|max:250',
       'start_date' => 'required|string|max:250',
@@ -47,6 +48,7 @@ class ContractController extends Controller
       'int_no' => $request->int_no,
       'type' => $request->type,
       'employer' => $request->employer,
+      'partners' => $request->partners,
       'executer' => $request->executer,
       'department' => $request->department,
       'group_name' => $request->group_name,
@@ -93,6 +95,7 @@ class ContractController extends Controller
       'type' => 'required|string|max:250',
       'employer' => 'required|string|max:250',
       'executer' => 'required|string|max:250',
+      'partners' => 'required|string|max:250',
       'department' => 'required|string|max:250',
       'group_name' => 'required|string|max:250',
       'start_date' => 'required|string|max:250',
@@ -114,6 +117,7 @@ class ContractController extends Controller
     $contract->type = $request->type;
     $contract->employer = $request->employer;
     $contract->executer = $request->executer;
+    $contract->partners = $request->partners;
     $contract->department = $request->department;
     $contract->group_name = $request->group_name;
     $contract->start_date = $start_date;

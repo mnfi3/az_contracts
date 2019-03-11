@@ -100,14 +100,26 @@
                    class="form-control" name="cost">
           </div>
 
-            <label class="col-md-2 text-right  col-form-label " for="type">وضعیت طرح</label>
+            <label class="col-md-2 text-right  col-form-label " for="status">وضعیت طرح</label>
             <div class="col-md-3">
-                <input type="text" id="type" required="" value="{{$contract->status}}"
+                <input type="text" id="status" required="" value="{{$contract->status}}"
                        class="form-control"
                        name="status">
             </div>
 
         </div>
+
+
+
+          <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="colleges">همکاران طرح </label>
+              <div class="col-md-3">
+                  <input type="text" id="colleges" required="" value="{{$contract->partners}}"
+                         class="form-control" name="partners">
+              </div>
+
+          </div>
+
         <div class="row">
           <label class="col-md-2 col-form-label  " for="documents">اسناد</label>
           <div class="col-md-3">
@@ -193,6 +205,7 @@
               <th>نوع طرح</th>
               <th> کارفرما</th>
               <th>مجریان طرح</th>
+              <th>همکاران طرح طرح</th>
               <th>دانشکده مربوطه</th>
               <th>گروه مربوطه</th>
               <th>زمان شروع</th>
@@ -212,6 +225,7 @@
             <td>{{$contract->type}}</td>
             <td>{{$contract->employer}}</td>
             <td>{{$contract->executer}}</td>
+            <td>{{$contract->partners}}</td>
             <td>{{$contract->department}}</td>
             <td>{{$contract->group_name}}</td>
             <td>{{$date->toPersiandate($contract->start_date, 'Y/m/d')}}</td>

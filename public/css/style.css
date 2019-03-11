@@ -1,0 +1,268 @@
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-FD.eot");
+  src: url("../fonts/Vazir-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-FD.woff2") format("woff2"), url("../fonts/Vazir-FD.woff") format("woff"), url("../fonts/Vazir-FD.ttf") format("truetype");
+  font-weight: normal;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Bold-FD.eot");
+  src: url("../fonts/Vazir-Bold-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-Bold-FD.woff2") format("woff2"), url("../fonts/Vazir-Bold-FD.woff") format("woff"), url("../fonts/Vazir-Bold-FD.ttf") format("truetype");
+  font-weight: bold;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Light-FD.eot");
+  src: url("../fonts/Vazir-Light-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-Light-FD.woff2") format("woff2"), url("../fonts/Vazir-Light-FD.woff") format("woff"), url("../fonts/Vazir-Light-FD.ttf") format("truetype");
+  font-weight: 300;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Medium-FD.eot");
+  src: url("../fonts/Vazir-Medium-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-Medium-FD.woff2") format("woff2"), url("../fonts/Vazir-Medium-FD.woff") format("woff"), url("../fonts/Vazir-Medium-FD.ttf") format("truetype");
+  font-weight: 500;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Thin-FD.eot");
+  src: url("../fonts/Vazir-Thin-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-Thin-FD.woff2") format("woff2"), url("../fonts/Vazir-Thin-FD.woff") format("woff"), url("../fonts/Vazir-Thin-FD.ttf") format("truetype");
+  font-weight: 100;
+}
+
+@font-face {
+  font-family: Vazir;
+  src: url("../fonts/Vazir-Black-FD.eot");
+  src: url("../fonts/Vazir-Black-FD.eot?#iefix") format("embedded-opentype"), url("../fonts/Vazir-Black-FD.woff2") format("woff2"), url("../fonts/Vazir-Black-FD.woff") format("woff"), url("../fonts/Vazir-Black-FD.ttf") format("truetype");
+  font-weight: 900;
+}
+
+body {
+  font-family: Vazir;
+}
+.app-container{
+  width: 100% !important;
+  background-color: #cad7ff;
+  min-height: calc(100vh - 56px);
+}
+.border-round{
+  -webkit-border-radius: 1rem;
+  -moz-border-radius: 1rem;
+  border-radius: 1rem;
+}
+.img-app{
+  height: 64px;
+}
+.nav-link {
+  color: white;
+}
+
+.navbar a {
+  color: #1a1c1a !important;
+}
+
+.navbar .activation {
+  background-color: white;
+  color: #1b1e21;
+  border-radius: 0.2rem;
+}
+
+.card-body a:hover {
+  background-color: black;
+  color: white;
+}
+
+.navbar-main {
+  background-color: #fff;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, .04)
+}
+
+.bg-main {
+  background-image: linear-gradient(90deg, #4b9cf6, #4971ff);
+}
+
+#login {
+  height: 100vh;
+  background-color: #cad7ff;
+  /*background-image: linear-gradient(90deg, #4b9cf6, #4971ff);*/
+}
+#login .card{
+  border:0px;
+}
+.bg-light-purple {
+  /*background-color: #ddceff;*/
+  background-color: #cad7ff;
+}
+
+#manage .card {
+  min-height: 250px;
+  border: 0px;
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+}
+#manage .card-footer{
+  background: rgba(0,0,0,0.15);
+}
+#manage .card a{
+  color:white;
+  font-size: 1.1em;
+  transition: background-color 0.2s;
+  border-bottom-right-radius: 1rem;
+  border-bottom-left-radius: 1rem;
+}
+#manage .card a:hover{
+  text-decoration: none;
+  background: rgba(0,0,0,0.3);
+}
+
+.bg-one {
+  background: #c94b4b;
+  background: -webkit-linear-gradient(to left, #4b134f, #c94b4b);
+  background: linear-gradient(to left, #4b134f, #c94b4b);
+
+}
+
+.bg-two {
+  background: #642B73;
+  background: -webkit-linear-gradient(to left, #C6426E, #642B73);
+  background: linear-gradient(to left, #C6426E, #642B73);
+
+}
+
+.bg-three {
+  background: #5b2473;
+  background: -webkit-linear-gradient(to left, #87145f, #590972);
+  background: linear-gradient(to left, #87145f, #590972);
+
+}
+
+.bg-four {
+  background: rgba(249, 249, 255, 0.22);
+}
+
+.bg-five {
+  background: #5a0678;
+  background: -webkit-linear-gradient(to left, #983384, #5a0678);
+  background: linear-gradient(to left, #983384, #5a0678);
+}
+/*#changePassword .form-control{*/
+/*border: 0;*/
+/*background-color: #f6f6f6;*/
+/*}*/
+#manage .card-footer {
+  border-top: 0;
+}
+
+#login .card {
+  border-radius: 1rem;
+  -webkit-box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+  -moz-box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+  box-shadow: 0px 14px 41px -22px rgba(0, 0, 0, 0.6);
+}
+
+
+.btn-app {
+  color: #ffffff;
+  background-color: #5b2473;
+  background: -webkit-linear-gradient(to left, #87145f, #590972);
+  background: linear-gradient(to left, #87145f, #590972);
+}
+
+.btn-app:hover,
+.btn-app:focus,
+.btn-app:active,
+.btn-app.active,
+.open .dropdown-toggle.btn-app {
+  color: #ffffff;
+  background-color: #4b2262;
+  background: -webkit-linear-gradient(to left, #5f1145, #480958);
+  background: linear-gradient(to left, #5f1145, #480958);
+}
+
+.btn-app:active,
+.btn-app.active,
+.open .dropdown-toggle.btn-app {
+  color: #ffffff;
+  background-color: #4b2262 !important; ;
+  background: -webkit-linear-gradient(to left, #5f1145, #480958);
+  background: linear-gradient(to left, #5f1145, #480958);
+}
+
+.btn-app.disabled,
+.btn-app[disabled],
+fieldset[disabled] .btn-app,
+.btn-app.disabled:hover,
+.btn-app[disabled]:hover,
+fieldset[disabled] .btn-app:hover,
+.btn-app.disabled:focus,
+.btn-app[disabled]:focus,
+fieldset[disabled] .btn-app:focus,
+.btn-app.disabled:active,
+.btn-app[disabled]:active,
+fieldset[disabled] .btn-app:active,
+.btn-app.disabled.active,
+.btn-app[disabled].active,
+fieldset[disabled] .btn-app.active {
+  background: #4b2262;
+  background: -webkit-linear-gradient(to left, #5f1145, #480958);
+  background: linear-gradient(to left, #5f1145, #480958);
+}
+
+.btn-app .badge {
+  color: #611BBD;
+  background-color: #ffffff;
+}
+#app input{
+  border: 0;
+  /*background-color: rgb(241, 243, 244) !important;*/
+  /*color: rgb(32, 33, 36);*/
+
+}
+#app input:focus,input:active{
+
+  -webkit-box-shadow:  0 0 0 0px white  ;
+  -moz-box-shadow:  0 0 0 0px white  ;
+  box-shadow:  0 0 0 0px white  ;
+  background-color: rgb(241, 243, 244) ;
+  border-bottom: 2px solid #1d68a7;
+  border-bottom-right-radius: 0;
+  border-bottom-left-radius: 0;
+}
+#app input:-webkit-autofill,
+input:-webkit-autofill:hover,
+input:-webkit-autofill:focus,
+input:-webkit-autofill:active  {
+  -webkit-box-shadow:  0 0 0 30px rgb(241, 243, 244) inset ;
+  /*background-color:  !important;*/
+}
+.header-icon{
+  font-size: 3.2rem;
+  color: #33007d;
+}
+.app-alert{
+  /*background-color: rgba(0,0,0,0.03);*/
+}
+#login input{
+  border: 0;
+  background-color: rgb(241, 243, 244) !important;
+  color: rgb(32, 33, 36);
+}
+.datepicker-plot-area{
+  width: 290px;
+}
+.status-is-finishing{
+  background-color: rgba(255, 193, 7, 0.57) !important;
+}
+.status-finished{
+  background-color: rgba(255, 0, 31, 0.54) !important;
+}
+.visit-img{
+  width: 100%;
+  max-height: 300px;
+  border-radius: 0.75rem;
+}
