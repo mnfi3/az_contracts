@@ -18,7 +18,7 @@ class AdminController extends Controller
       $this->middleware('auth');
     }
 
-//
+
 //    public function import(){
 //
 //      $data = Excel::load('contracts.xlsx', 'UTF-8')->get();
