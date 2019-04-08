@@ -54,7 +54,7 @@
                 </div>
 
                 <div class="row">
-                    <label class="col-md-2 col-form-label  " for="documents">مکاتبات و نتیجه متغیر</label>
+                    <label class="col-md-2 col-form-label  " for="documents">مکاتبات و نتیجه </label>
                     <div class="col-md-3">
                         <div id="fileInputsContainer" class="d-flex flex-column">
                             <div class="d-flex">
