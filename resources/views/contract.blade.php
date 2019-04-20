@@ -28,12 +28,12 @@
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="outsideNumber">شماره قرارداد بیرونی</label>
           <div class="col-md-3">
-            <input type="number" id="insideNumber" required="" value="{{$contract->ext_no}}"
+            <input type="text" id="insideNumber" required="" value="{{$contract->ext_no}}"
                    class="form-control" name="ext_no">
           </div>
           <label class="col-md-2 text-right col-form-label" for="insideNumber">شماره قرارداد داخلی</label>
           <div class="col-md-3">
-            <input type="number" id="insideNumber" required="" value="{{$contract->int_no}}"
+            <input type="text" id="insideNumber" required="" value="{{$contract->int_no}}"
                    class="form-control" name="int_no">
           </div>
         </div>
