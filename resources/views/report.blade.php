@@ -110,6 +110,10 @@
                         <th>مشارکتی/انفرادی</th>
                         <th>مبلغ طرح</th>
                         <th>وضعیت</th>
+                        <th>پرداخت اول</th>
+                        <th>پرداخت دوم</th>
+                        <th>پرداخت سوم</th>
+                        <th>پرداخت نهایی</th>
                         <th>مشاهده</th>
                     </tr>
                     </thead>
@@ -136,6 +140,10 @@
                                 <td>{{$contract->participation}}</td>
                                 <td>{{number_format($contract->cost)}}</td>
                                 <td>{{$contract->status}}</td>
+                                <td>{{$contract->pay1}}</td>
+                                <td>{{$contract->pay2}}</td>
+                                <td>{{$contract->pay3}}</td>
+                                <td>{{$contract->pay_final}}</td>
                                 <td>
                                     <a href="{{route('contract', $contract->id)}}" class="btn btn-light">مشاهده</a>
                                 </td>

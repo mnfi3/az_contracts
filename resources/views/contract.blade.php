@@ -93,6 +93,7 @@
           </div>
 
         </div>
+
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="amount">مبلغ طرح </label>
           <div class="col-md-3">
@@ -116,6 +117,37 @@
               <div class="col-md-3">
                   <input type="text" id="colleges" required="" value="{{$contract->partners}}"
                          class="form-control" name="partners">
+              </div>
+
+              <label class="col-md-2 text-right  col-form-label " for="status">پرداخت اول(ریال) </label>
+              <div class="col-md-3">
+                  <input type="number" id="colleges" required="" value="{{$contract->pay1}}"
+                         class="form-control" name="pay1">
+              </div>
+
+          </div>
+
+          <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="colleges">پرداخت دوم(ریال) </label>
+              <div class="col-md-3">
+                  <input type="number" id="colleges"  value="{{$contract->pay2}}"
+                         class="form-control" name="pay2">
+              </div>
+
+              <label class="col-md-2 text-right  col-form-label " for="status">پرداخت سوم(ریال) </label>
+              <div class="col-md-3">
+                  <input type="number" id="colleges"  value="{{$contract->pay3}}"
+                         class="form-control" name="pay3">
+              </div>
+
+          </div>
+
+
+          <div class="form-group row">
+              <label class="col-md-2 col-form-label" for="colleges">پرداخت نهایی(ریال) </label>
+              <div class="col-md-3">
+                  <input type="number" id="colleges"  value="{{$contract->pay_final}}"
+                         class="form-control" name="pay_final">
               </div>
 
           </div>
@@ -214,6 +246,10 @@
               <th>مشارکتی/انفرادی</th>
               <th>مبلغ طرح</th>
               <th>وضعیت</th>
+              <th>پرداخت اول</th>
+              <th>پرداخت دوم</th>
+              <th>پرداخت سوم</th>
+              <th>پرداخت نهایی</th>
           </tr>
           </thead>
           <tbody class=" text-center">
@@ -234,6 +270,10 @@
             <td>{{$contract->participation}}</td>
             <td>{{number_format($contract->cost)}} ریال </td>
             <td>{{$contract->status}}</td>
+            <td>{{$contract->pay1}}</td>
+            <td>{{$contract->pay2}}</td>
+            <td>{{$contract->pay3}}</td>
+            <td>{{$contract->pay_final}}</td>
           </tr>
 
           </tbody>

@@ -36,6 +36,10 @@ class ContractController extends Controller
       'status' => 'required|string|max:250',
       'participation' => 'required|string|max:250',
       'cost' => 'required|numeric',
+      'pay1' => '',
+      'pay2' => '',
+      'pay3' => '',
+      'pay_final' => '',
     ]);
 
 
@@ -58,6 +62,10 @@ class ContractController extends Controller
       'status' => $request->status,
       'participation' => $request->participation,
       'cost' => $request->cost,
+      'pay1' => $request->pay1,
+      'pay2' => $request->pay2,
+      'pay3' => $request->pay3,
+      'pay_final' => $request->pay_final,
     ]);
 
 
@@ -104,6 +112,10 @@ class ContractController extends Controller
       'status' => 'required|string|max:250',
       'participation' => 'required|string|max:250',
       'cost' => 'required|numeric',
+      'pay1' => '',
+      'pay2' => '',
+      'pay3' => '',
+      'pay_final' => '',
     ]);
 
     $date = new PersianDate();
@@ -126,6 +138,10 @@ class ContractController extends Controller
     $contract->status = $request->status;
     $contract->participation = $request->participation;
     $contract->cost = $request->cost;
+    $contract->pay1 = $request->pay1;
+    $contract->pay2 = $request->pay2;
+    $contract->pay3 = $request->pay3;
+    $contract->pay_final = $request->pay_final;
     $contract->save();
 
 

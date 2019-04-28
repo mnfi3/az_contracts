@@ -117,6 +117,37 @@
                                class="form-control" name="partners">
                     </div>
 
+                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت اول(ریال) </label>
+                    <div class="col-md-3">
+                        <input type="number" id="colleges"
+                               class="form-control" name="pay1">
+                    </div>
+
+                </div>
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="colleges">پرداخت دوم(ریال) </label>
+                    <div class="col-md-3">
+                        <input type="number" id="colleges"
+                               class="form-control" name="pay2">
+                    </div>
+
+                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت سوم(ریال) </label>
+                    <div class="col-md-3">
+                        <input type="number" id="colleges"
+                               class="form-control" name="pay3">
+                    </div>
+
+                </div>
+
+
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="colleges">پرداخت نهایی(ریال) </label>
+                    <div class="col-md-3">
+                        <input type="number" id="colleges"
+                               class="form-control" name="pay_final">
+                    </div>
+
                 </div>
 
                 <div class="row">
@@ -175,6 +206,10 @@
                         <th>مشارکتی/انفرادی</th>
                         <th>مبلغ طرح</th>
                         <th>وضعیت</th>
+                        <th>پرداخت اول</th>
+                        <th>پرداخت دوم</th>
+                        <th>پرداخت سوم</th>
+                        <th>پرداخت نهایی</th>
                         <th>مشاهده</th>
                     </tr>
                     </thead>
@@ -219,6 +254,10 @@
                             <td>{{$contract->participation}}</td>
                             <td>{{number_format($contract->cost)}} ریال </td>
                             <td>{{$contract->status}}</td>
+                            <td>{{$contract->pay1}}</td>
+                            <td>{{$contract->pay2}}</td>
+                            <td>{{$contract->pay3}}</td>
+                            <td>{{$contract->pay_final}}</td>
                             <td>
                                 <a href="{{route('contract', $contract->id)}}" class="btn btn-light">مشاهده</a>
                             </td>
