@@ -80,7 +80,7 @@ return [
       /*
        * The filename prefix used for the backup zip file.
        */
-      'filename_prefix' => 'cm_',
+      'filename_prefix' => 'CM_',
 
       /*
        * The disk names on which the backups will be stored.
