@@ -69,6 +69,8 @@ Route::post('add-visit', 'VisitController@add')->name('add-visit');
 Route::post('edit-visit', 'VisitController@edit')->name('edit-visit');
 Route::post('remove-visit', 'VisitController@remove')->name('remove-visit');
 
+Route::get('/admin-backup', 'BackupController@index')->name('admin-backup');
+
 
 
 

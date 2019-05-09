@@ -17,7 +17,7 @@
             </div>
           </div>
           <div class="col-md-3">
-            <div class="card text-center bg-two text-white">
+            <div class="card text-center bg-two text-white my-2">
               <div class="card-body">
                 <h3 class="pb-3">تفاهم نامه ها</h3>
                 <h1 class="display-3">
@@ -29,7 +29,7 @@
 
           </div>
           <div class="col-md-3">
-            <div class="card text-center bg-three text-white">
+            <div class="card text-center bg-three text-white my-2">
               <div class="card-body">
                 <h3 class="pb-3">پروپوزال ها</h3>
                 <h2 class="display-3">
@@ -40,7 +40,7 @@
             </div>
           </div>
           <div class="col-md-3 ml-auto mr-auto">
-            <div class="card text-center bg-five text-white">
+            <div class="card text-center bg-five text-white my-2">
               <div class="card-body">
                 <h3 class="pb-3">گزارش گیری</h3>
                 <h1 class="display-3">
@@ -52,7 +52,7 @@
           </div>
 
             <div class="col-md-3 mt-2">
-                <div class="card text-center bg-three text-white">
+                <div class="card text-center bg-three text-white my-2">
                     <div class="card-body">
                         <h3 class="pb-3">بازدید ها</h3>
                         <h2 class="display-3">
@@ -68,10 +68,23 @@
     </section>
 
     <section id="changePassword" class="p-3">
-      <h4 class="mt-2">مدیریت کاربران</h4>
+      <h4 class="mt-2">مدیریت سیستم</h4>
       <div class="container-fluid bg-four mt-3 p-5 border-round">
 
-        <div class="row">
+          <h5 class="pb-3" style="text-align: right">تهیه فایل پشتیبان</h5>
+          <div class="row mb-5 sbg-light">
+              <div class="col-md-12">
+                  <div class="d-flex flex-row">
+                      <div class="mr-5">
+                          <a href="{{route('admin-backup')}}" class="btn btn-app btn-sm p-2">دریافت فایل پشتیبان</a>
+                          <span class="text-dark " style="font-family: Vazir;font-size: 0.9rem">
+                         (توجه : ممکن است لحظاتی طول بکشد)
+                    </span>
+                      </div>
+                  </div>
+              </div>
+          </div>
+          <div class="row">
           <div class="col-md-6">
 
             <h5 class="pb-3" style="text-align: right">تغییر رمز عبور</h5>
@@ -145,6 +158,7 @@
             </form>
           </div>
         </div>
+
       </div>
     </section>
 
