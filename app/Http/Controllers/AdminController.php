@@ -225,10 +225,7 @@ class AdminController extends Controller
       $contracts = [];
       if($category_id != 1 && $category_id != 2) return $contracts;
 
-      if (!is_null($text)) {
-        $contracts1 = DB::select("
-          select * from contracts
-          where name like '%$text%'
+      $q = "select * from contracts where (name like '%$text%'
           or ext_no like '%$text%'
           or int_no like '%$text%'
           or type like '%$text%'
@@ -237,37 +234,74 @@ class AdminController extends Controller
           or department like '%$text%'
           or group_name like '%$text%'
           or status like '%$text%'
-          or participation like '%$text%' 
-          and deleted_at is null");
+          or participation like '%$text%')";
 
-        $contracts = $this->push($contracts, $contracts1);
-      }
+//      if (!is_null($text)) {
+//        $q .= " or name like '%$text%'
+//          or ext_no like '%$text%'
+//          or int_no like '%$text%'
+//          or type like '%$text%'
+//          or employer like '%$text%'
+//          or executer like '%$text%'
+//          or department like '%$text%'
+//          or group_name like '%$text%'
+//          or status like '%$text%'
+//          or participation like '%$text%'";
+//
+//        $contracts1 = DB::select("
+//          select * from contracts
+//          where name like '%$text%'
+//          or ext_no like '%$text%'
+//          or int_no like '%$text%'
+//          or type like '%$text%'
+//          or employer like '%$text%'
+//          or executer like '%$text%'
+//          or department like '%$text%'
+//          or group_name like '%$text%'
+//          or status like '%$text%'
+//          or participation like '%$text%'
+//          and deleted_at is null");
+
+//        $contracts = $this->push($contracts, $contracts1);
+//      }
 
 
       if(!is_null($from_date) && !is_null($to_date)){
-        $contracts1 = DB::select("
-          select * from contracts
-          where start_date between '$from_date' and '$to_date'
-          and deleted_at is null");
+        $q .= " and (start_date between '$from_date' and '$to_date')";
+//        $contracts1 = DB::select("
+//          select * from contracts
+//          where start_date between '$from_date' and '$to_date'
+//          and deleted_at is null");
 
-        $contracts2 = DB::select("
-          select * from contracts
-          where finish_date between '$from_date' and '$to_date'
-          and deleted_at is null");
+        $q .= " and (finish_date between '$from_date' and '$to_date')";
+//        $contracts2 = DB::select("
+//          select * from contracts
+//          where finish_date between '$from_date' and '$to_date'
+//          and deleted_at is null");
 
-        $contracts = $this->push($contracts, $contracts1);
-        $contracts = $this->push($contracts, $contracts2);
+//        $contracts = $this->push($contracts, $contracts1);
+//        $contracts = $this->push($contracts, $contracts2);
+
+
+
+
       }
 
 
       if(!is_null($from_price) && !is_null($to_price)){
-        $contracts1 = DB::select("
-          select * from contracts
-          where cost between '$from_price' and '$to_price'
-          and deleted_at is null");
+//        $contracts1 = DB::select("
+//          select * from contracts
+//          where cost between '$from_price' and '$to_price'
+//          and deleted_at is null");
+//
+//        $contracts = $this->push($contracts, $contracts1);
 
-        $contracts = $this->push($contracts, $contracts1);
+        $q .= " and (cost between '$from_price' and '$to_price')";
       }
+
+      $q .= " and (deleted_at is null)";
+
+      $contracts = DB::select($q);
 
 
       return $contracts;
@@ -281,24 +315,34 @@ class AdminController extends Controller
       $memorandums = [];
       if($category_id != 1 && $category_id != 3) return $memorandums;
 
-      if (!is_null($text)) {
-        $memorandums1 = DB::select("
-          select * from memoranda
-          where title like '%$text%'
-          and deleted_at is null");
+      $q = "select * from memoranda
+          where (title like '%$text%')";
 
-        $memorandums = $this->push($memorandums, $memorandums1);
-      }
+//      if (!is_null($text)) {
+//        $memorandums1 = DB::select("
+//          select * from memoranda
+//          where title like '%$text%'
+//          and deleted_at is null");
+//
+//        $memorandums = $this->push($memorandums, $memorandums1);
+//      }
 
 
       if(!is_null($from_date) && !is_null($to_date)){
-        $memorandums1 = DB::select("
-          select * from memoranda
-          where date BETWEEN '$from_date' and '$to_date'
-          and deleted_at is null");
+//        $memorandums1 = DB::select("
+//          select * from memoranda
+//          where date BETWEEN '$from_date' and '$to_date'
+//          and deleted_at is null");
+//
+//        $memorandums = $this->push($memorandums, $memorandums1);
 
-        $memorandums = $this->push($memorandums, $memorandums1);
+
+        $q .= " and (date BETWEEN '$from_date' and '$to_date')";
       }
+
+      $q .= " and (deleted_at is null)";
+
+      $memorandums = DB::select($q);
 
 
       return $memorandums;
@@ -312,26 +356,40 @@ class AdminController extends Controller
       $proposals = [];
       if($category_id != 1 && $category_id != 4) return $proposals;
 
-      if (!is_null($text)) {
-
-        $proposals1 = DB::select(
-          "select * from proposals
-          where name like '%$text%' 
+      $q = "select * from proposals
+          where (name like '%$text%' 
           or title like '%$text%'
           or department like '%$text%'
           or group_name like '%$text%'
-          or employer like '%$text%'
-          and deleted_at is null");
+          or employer like '%$text%')";
 
-        $proposals = $this->push($proposals, $proposals1);
-      }
+//      if (!is_null($text)) {
+//        $proposals1 = DB::select(
+//          "select * from proposals
+//          where name like '%$text%'
+//          or title like '%$text%'
+//          or department like '%$text%'
+//          or group_name like '%$text%'
+//          or employer like '%$text%'
+//          and deleted_at is null");
+//
+//        $proposals = $this->push($proposals, $proposals1);
+//      }
+
 
       if(!is_null($from_date) && !is_null($to_date)){
-        $proposals1 = DB::select("select * from proposals
-        where date BETWEEN '$from_date' and '$to_date'
-        and deleted_at is null");
-        $proposals = $this->push($proposals, $proposals1);
+//        $proposals1 = DB::select("select * from proposals
+//        where date BETWEEN '$from_date' and '$to_date'
+//        and deleted_at is null");
+//        $proposals = $this->push($proposals, $proposals1);
+
+
+        $q .= " and (date BETWEEN '$from_date' and '$to_date')";
       }
+
+      $q .= "and (deleted_at is null)";
+
+      $proposals = DB::select($q);
 
       return $proposals;
     }
