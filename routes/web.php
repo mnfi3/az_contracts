@@ -73,7 +73,12 @@ Route::get('/admin-backup', 'BackupController@index')->name('admin-backup');
 
 
 
-
+// research oppurtunity
+Route::get('/opportunities', 'OpportunityController@all')->name('opportunities');
+Route::get('/opportunity/{id}', 'OpportunityController@item')->name('opportunity');
+Route::post('/opportunity-add', 'OpportunityController@add')->name('opportunity-add');
+Route::post('/opportunity-remove', 'OpportunityController@remove')->name('opportunity-remove');
+Route::post('/opportunity-edit', 'OpportunityController@update')->name('opportunity-edit');
 
 
 

@@ -172,6 +172,7 @@ class AdminController extends Controller
       $contracts = [];
       $memorandums = [];
       $proposals = [];
+      $opportunities = [];
       $text = null;
       $category_id = null;
       $from_date = null;
@@ -180,7 +181,7 @@ class AdminController extends Controller
       $to_price = null;
 
       return view('report', compact(['contracts', 'memorandums', 'proposals',
-      'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
+        'opportunities', 'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
     }
 
 
@@ -205,10 +206,11 @@ class AdminController extends Controller
       $contracts = $this->searchContracts($text, $category_id, $from_date, $to_date, $from_price, $to_price);
       $memorandums = $this->searchMemorandums($text, $category_id, $from_date, $to_date, $from_price, $to_price);
       $proposals = $this->searchProposals($text, $category_id, $from_date, $to_date, $from_price, $to_price);
+      $opportunities = $this->searchOpportunities($text, $category_id, $from_date, $to_date);
 
 
       return view('report', compact(['contracts', 'memorandums', 'proposals',
-        'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
+        'opportunities', 'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
     }
 
 
@@ -392,6 +394,28 @@ class AdminController extends Controller
       $proposals = DB::select($q);
 
       return $proposals;
+    }
+
+
+    private function searchOpportunities($text, $category_id, $from_date, $to_date){
+      $opportunities = [];
+      if($category_id != 1 && $category_id != 5) return $opportunities;
+
+      $q = "select * from opportunities
+          where (executer like '%$text%' 
+          or company like '%$text%')";
+
+
+      if(!is_null($from_date) && !is_null($to_date)){
+        $q .= " and ((start_date BETWEEN '$from_date' and '$to_date') or 
+        (finish_date BETWEEN '$from_date'  and '$to_date'))";
+      }
+
+      $q .= "and (deleted_at is null)";
+
+      $opportunities = DB::select($q);
+
+      return $opportunities;
     }
 
 

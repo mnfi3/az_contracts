@@ -26,7 +26,6 @@
               </div>
               <a href="{{route('memorandums')}}" class="card-footer">ورود</a>
             </div>
-
           </div>
           <div class="col-md-3">
             <div class="card text-center bg-three text-white my-2">
@@ -62,6 +61,17 @@
                     <a href="{{route('visits')}}" class="card-footer">ورود</a>
                 </div>
             </div>
+            <div class="col-md-3 mt-2">
+                <div class="card text-center bg-three text-white my-2">
+                    <div class="card-body">
+                        <h3 class="pb-3">فرصت های مطالعاتی</h3>
+                        <h2 class="display-3">
+                            <i class="fal fa-book-open"></i>
+                        </h2>
+                    </div>
+                    <a href="{{url('/opportunities')}}" class="card-footer">ورود</a>
+                </div>
+            </div>
 
         </div>
       </div>
@@ -88,8 +98,6 @@
           <div class="col-md-6">
 
             <h5 class="pb-3" style="text-align: right">تغییر رمز عبور</h5>
-
-
             <form class="" action="{{route('change-password')}}" method="post">
                 @csrf
               <div class="form-group row  ">

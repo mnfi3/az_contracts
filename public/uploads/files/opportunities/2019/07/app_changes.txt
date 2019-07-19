@@ -1,0 +1,13 @@
+1- change menu rent and shop items (add price and font size change)
+2- add more button in menu to lists
+3- add item click listener to posts items
+4- add site pay to user in app and server
+5- change intro 1
+6- modify webview
+7- change show rent and show shop activity in show game name(change font size and convert to regular)
+9- add shop verify dialog when shop button clicked
+10- change no network activity
+11- change activity purchase toolbar
+12- change menu fragments to recyclerviews #
+13- check and verify comments in server
+14- check firebase token handling

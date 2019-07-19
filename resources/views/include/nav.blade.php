@@ -19,9 +19,10 @@
             <a class="nav-link" href="{{ route('logout') }}" onclick="event.preventDefault();
                                                      document.getElementById('logout-form').submit();">خروج از سیستم</a>
           </li>
-          <li class="nav-item">
-            <a class="nav-link" href="{{ route('report') }}">گزارش گیری</a>
-          </li>
+
+              <li class="nav-item">
+                  <a class="nav-link" href={{url('opportunities')}}>فرصت های مطالعاتی</a>
+              </li>
 
          <li class="nav-item">
              <a class="nav-link" href="{{ route('visits') }}">بازدید ها</a>
@@ -36,6 +37,9 @@
           <li class="nav-item">
             <a class="nav-link" href="{{ route('contracts') }}">قراردادها</a>
           </li>
+              <li class="nav-item">
+                  <a class="nav-link" href="{{ route('report') }}">گزارش گیری</a>
+              </li>
           <li class="nav-item">
             <a class="nav-link" href="{{ route('home') }}">پنل مدیریت</a>
           </li>

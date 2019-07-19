@@ -30,6 +30,7 @@
                                     <option value="2"@if($category_id == 2) selected @endif>قرارداد</option>
                                     <option value="3"@if($category_id == 3) selected @endif>تفاهم نامه</option>
                                     <option value="4"@if($category_id == 4) selected @endif>پروپوزال</option>
+                                    <option value="5"@if($category_id == 5) selected @endif>فرصت مطالعاتی</option>
                                 </select>
                             </div>
                         </div>
@@ -50,12 +51,12 @@
                         <div class="form-group row">
                             <label class="col-sm-2 col-form-label  " for="price"> از مبلغ :</label>
                             <div class="col-sm-4">
-                                <input type="number" id="price"  class="form-control" placeholder="به ریال"
+                                <input type="text" id="price"  class="form-control" placeholder="به ریال"
                                        name="from_price" @if(!is_null($from_price)) value="{{$from_price}}" @endif>
                             </div>
                             <label class="col-sm-2 col-form-label  " for="price2"> تا مبلغ :</label>
                             <div class="col-sm-4">
-                                <input type="number" id="price2"  placeholder="به ریال" class="form-control "
+                                <input type="text" id="price2"  placeholder="به ریال" class="form-control "
                                        name="to_price" @if(!is_null($to_price)) value="{{$to_price}}" @endif>
                             </div>
                         </div>
@@ -272,6 +273,50 @@
                 </table>
             </div>
         </div>
+        <div class="container-fluid mt- mb-5 p-3 bg-white border-round">
+            <div class="d-flex">
+                @if(count($opportunities) > 0)
+                    <h5 class="pt-2"> نتیجه جستجو : {{count($opportunities)}} مورد یافت شد </h5>
+                @endif
+                <button class="btn btn-app ml-auto" onclick="excelReport(this)">
+                    <i class="fal fa-file-excel"></i>
+                    دریافت خروجی
+                </button>
+            </div>
+            <h5 class="py-2 "> فرصت های مطالعاتی :</h5>
+            <div class="table-responsive">
+                <table id="فرصت های مطالعاتی-جستجو" class="table table-striped table-bordered ">
+                    <thead class="text-center   ">
+                    <tr>
+                        <th class="text-center">ردیف</th>
+                        <th class="text-center">مجری</th>
+                        <th class="text-center">تاریخ شروع</th>
+                        <th class="text-center">تاریخ پایان</th>
+                        <th class="text-center">شرکت صنعتی طرف قرارداد</th>
+                        <th class="text-center">مشاهده</th>
+                    </tr>
+                    </thead>
+                    <tbody class=" text-center">
+                    @php($i=0)
+                    @php($date = new \App\Http\Controllers\PersianDate())
+                    @foreach($opportunities as $opportunity)
+                    <tr>
+                        <th scope="row" class="text-center">{{++$i}}</th>
+                        <td>{{$opportunity->executer}}</td>
+                        <td>{{$date->toPersiandate($opportunity->start_date, 'Y/m/d')}}</td>
+                        <td>{{$date->toPersiandate($opportunity->finish_date, 'Y/m/d')}}</td>
+                        <td>{{$opportunity->company}}</td>
+                        <td>
+                            {{--<a href="{{route('proposal', $proposal->id)}}" class="btn btn-light">مشاهده</a>--}}
+                            <a href="{{route('opportunity', $opportunity->id)}}" class="btn btn-light">مشاهده</a>
+                        </td>
+                    </tr>
+                    @endforeach
+                    </tbody>
+                </table>
+            </div>
+            </div>
+
 
     </section>
 
