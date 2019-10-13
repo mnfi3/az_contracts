@@ -175,23 +175,26 @@ class AdminController extends Controller
       $opportunities = [];
       $text = null;
       $category_id = null;
+      $status_id = null;
       $from_date = null;
       $to_date = null;
       $from_price = null;
       $to_price = null;
 
       return view('report', compact(['contracts', 'memorandums', 'proposals',
-        'opportunities', 'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
+        'opportunities', 'text', 'category_id', 'status_id',  'from_date', 'to_date', 'from_price', 'to_price']));
     }
 
 
     public function reportResult(Request $request){
       $text = $request->text;
       $category_id = $request->category_id;
+      $status_id = $request->status_id;
       $from_date = $request->from_date;
       $to_date = $request->to_date;
       $from_price = $request->from_price;
       $to_price = $request->to_price;
+
 
       //convert dates
       $date = new PersianDate();
@@ -203,14 +206,14 @@ class AdminController extends Controller
       }
 
 
-      $contracts = $this->searchContracts($text, $category_id, $from_date, $to_date, $from_price, $to_price);
+      $contracts = $this->searchContracts($text, $category_id, $from_date, $to_date, $from_price, $to_price, $status_id);
       $memorandums = $this->searchMemorandums($text, $category_id, $from_date, $to_date, $from_price, $to_price);
       $proposals = $this->searchProposals($text, $category_id, $from_date, $to_date, $from_price, $to_price);
       $opportunities = $this->searchOpportunities($text, $category_id, $from_date, $to_date);
 
 
       return view('report', compact(['contracts', 'memorandums', 'proposals',
-        'opportunities', 'text', 'category_id', 'from_date', 'to_date', 'from_price', 'to_price']));
+        'opportunities', 'text', 'category_id', 'status_id', 'from_date', 'to_date', 'from_price', 'to_price']));
     }
 
 
@@ -223,7 +226,7 @@ class AdminController extends Controller
 
 
 
-    private function searchContracts($text, $category_id, $from_date, $to_date, $from_price, $to_price){
+    private function searchContracts($text, $category_id, $from_date, $to_date, $from_price, $to_price, $status_id){
       $contracts = [];
       if($category_id != 1 && $category_id != 2) return $contracts;
 
@@ -238,74 +241,26 @@ class AdminController extends Controller
           or status like '%$text%'
           or participation like '%$text%')";
 
-//      if (!is_null($text)) {
-//        $q .= " or name like '%$text%'
-//          or ext_no like '%$text%'
-//          or int_no like '%$text%'
-//          or type like '%$text%'
-//          or employer like '%$text%'
-//          or executer like '%$text%'
-//          or department like '%$text%'
-//          or group_name like '%$text%'
-//          or status like '%$text%'
-//          or participation like '%$text%'";
-//
-//        $contracts1 = DB::select("
-//          select * from contracts
-//          where name like '%$text%'
-//          or ext_no like '%$text%'
-//          or int_no like '%$text%'
-//          or type like '%$text%'
-//          or employer like '%$text%'
-//          or executer like '%$text%'
-//          or department like '%$text%'
-//          or group_name like '%$text%'
-//          or status like '%$text%'
-//          or participation like '%$text%'
-//          and deleted_at is null");
 
-//        $contracts = $this->push($contracts, $contracts1);
-//      }
+      $today = date('Y-m-d');
+      if ($status_id == 1) {
+        $q .= " and (finish_date > '$today')";
+      }else{
+        $q .= " and (finish_date < '$today')";
+      }
 
 
       if(!is_null($from_date) && !is_null($to_date)){
         $q .= " and (start_date between '$from_date' and '$to_date')";
-//        $contracts1 = DB::select("
-//          select * from contracts
-//          where start_date between '$from_date' and '$to_date'
-//          and deleted_at is null");
-
         $q .= " and (finish_date between '$from_date' and '$to_date')";
-//        $contracts2 = DB::select("
-//          select * from contracts
-//          where finish_date between '$from_date' and '$to_date'
-//          and deleted_at is null");
-
-//        $contracts = $this->push($contracts, $contracts1);
-//        $contracts = $this->push($contracts, $contracts2);
-
-
-
-
       }
 
 
       if(!is_null($from_price) && !is_null($to_price)){
-//        $contracts1 = DB::select("
-//          select * from contracts
-//          where cost between '$from_price' and '$to_price'
-//          and deleted_at is null");
-//
-//        $contracts = $this->push($contracts, $contracts1);
-
         $q .= " and (cost between '$from_price' and '$to_price')";
       }
-
       $q .= " and (deleted_at is null)";
-
       $contracts = DB::select($q);
-
-
       return $contracts;
     }
 

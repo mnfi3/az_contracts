@@ -34,6 +34,20 @@
                                 </select>
                             </div>
                         </div>
+
+                        <div class="form-group row">
+                            <label class="col-md-2 col-form-label" for="post-title">وضعیت</label>
+                            <div class="col-md-4">
+                                <select required="" class="form-control" name="status_id"
+                                        style="font-weight: bold; min-height: 40px">
+                                    <option value="0"@if($status_id == 0) selected @endif>همه</option>
+                                    <option value="1"@if($status_id == 1) selected @endif>خاتمه نیافته</option>
+                                    <option value="2"@if($status_id == 2) selected @endif>خاتمه یافته</option>
+                                </select>
+                            </div>
+                        </div>
+
+
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label " for="duration"> از تاریخ :</label>
                             <div class="col-md-4">
