@@ -48,7 +48,7 @@
                         <div class="form-group row">
                             <label class="col-md-2 col-form-label" for="number">شماره تفاهم نامه</label>
                             <div class="col-md-6">
-                                <input type="number" id="number"
+                                <input type="text" id="number"
                                        class="form-control" name="number" value="{{$memorandum->number}}">
                             </div>
                         </div>

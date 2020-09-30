@@ -133,12 +133,36 @@
                     </tr>
                     </thead>
                     <tbody class="text-center">
-
+					 <?php
+                    $i=0;
+                    $date = new \App\Http\Controllers\PersianDate();
+                    $originaldate = date("Y-m-d");
+                    $converted = DateTime::createFromFormat("Y-m-d", $originaldate);
+                    $converted1months = $converted->add(new DateInterval("P1M"));//1 month later
+                    ?>
                     @if(count($contracts) > 0)
                         @php($i=0)
                         @php($date = new \App\Http\Controllers\PersianDate())
                         @foreach($contracts as $contract)
-                            <tr>
+                             <tr class="
+
+                            @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) status-finished
+                            @elseif(strlen($contract->finish_date) > 2 && $converted1months > $contract->finish_date) status-is-finishing
+							
+                            @endif
+
+                                "
+																style="
+																@if($contract->status == 'خاتمه یافته')
+																	background-color:green !important;
+																	color:#fff !important;
+																	@endif
+																"
+																
+																
+																
+																
+								>
                                 <th scope="row">{{++$i}}</th>
                                 <td><a href="{{route('contract', $contract->id)}}">{{$contract->name}}</a></td>
                                 <td>{{$contract->ext_no}}</td>

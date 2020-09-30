@@ -230,9 +230,22 @@
 
                             @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) status-finished
                             @elseif(strlen($contract->finish_date) > 2 && $converted1months > $contract->finish_date) status-is-finishing
+							
                             @endif
 
-                                ">
+                                "
+																style="
+																@if($contract->status == 'خاتمه یافته')
+																	background-color:green !important;
+																	color:#fff !important;
+																	@endif
+																"
+																
+																
+																
+																
+								>
+
 
 
                             <th scope="row">{{++$i}}</th>
@@ -259,7 +272,7 @@
                             <td>{{$contract->pay3}}</td>
                             <td>{{$contract->pay_final}}</td>
                             <td>
-                                <a href="{{route('contract', $contract->id)}}" class="btn btn-light">مشاهده</a>
+                                <a href="{{route('contract', $contract->id)}}" class="btn btn-light">ویرایش</a>
                             </td>
 
                         </tr>
