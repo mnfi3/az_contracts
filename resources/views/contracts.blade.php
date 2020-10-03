@@ -42,12 +42,32 @@
                         <input type="text" id="employer" required=""
                                class="form-control" name="employer">
                     </div>
-                    <label class="col-md-2 text-right  col-form-label" for="projectExecutives">مجریان طرح</label>
+                    <label class="col-md-2 text-right col-form-label" for="colleges"> شماره موبایل (برای ارسال پیام)</label>
                     <div class="col-md-3">
-                        <input type="text" id="projectExecutives" required=""
-                               class="form-control" name="executer">
+                        <input type="number" id="colleges"  value=""
+                               class="form-control" name="mobile" >
                     </div>
                 </div>
+                <div class="form-group row">
+                    <label class="col-md-2 col-form-label" for="projectExecutives">مجری طرح</label>
+                    <div class="col-md-3">
+                        <input type="text" id="projectExecutives" required="" placeholder="نام مجری"
+                               class="form-control" name="executer_name[]">
+
+
+                    </div>
+
+                    <div class="col-md-3">
+                        <div class="btn text-white p-1 btn-app" onclick="insertInput()"  style="border-radius: 75px!important;">افزودن مجری جدید <span><i class="fa fa-plus"></i></span></div>
+
+                    </div>
+
+
+                </div>
+                <div class="form-group row" id="executer" style="width: 100%!important;">
+
+                </div>
+
 
                 <div class="form-group row">
                     <label class="col-md-2 col-form-label" for="college">دانشکده مربوطه</label>
@@ -117,38 +137,38 @@
                                class="form-control" name="partners">
                     </div>
 
-                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت اول(ریال) </label>
-                    <div class="col-md-3">
-                        <input type="number" id="colleges"
-                               class="form-control" name="pay1">
-                    </div>
+{{--                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت اول(ریال) </label>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <input type="number" id="colleges"--}}
+{{--                               class="form-control" name="pay1">--}}
+{{--                    </div>--}}
 
                 </div>
 
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label" for="colleges">پرداخت دوم(ریال) </label>
-                    <div class="col-md-3">
-                        <input type="number" id="colleges"
-                               class="form-control" name="pay2">
-                    </div>
+{{--                <div class="form-group row">--}}
+{{--                    <label class="col-md-2 col-form-label" for="colleges">پرداخت دوم(ریال) </label>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <input type="number" id="colleges"--}}
+{{--                               class="form-control" name="pay2">--}}
+{{--                    </div>--}}
 
-                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت سوم(ریال) </label>
-                    <div class="col-md-3">
-                        <input type="number" id="colleges"
-                               class="form-control" name="pay3">
-                    </div>
+{{--                    <label class="col-md-2 text-right  col-form-label " for="status">پرداخت سوم(ریال) </label>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <input type="number" id="colleges"--}}
+{{--                               class="form-control" name="pay3">--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
 
-                <div class="form-group row">
-                    <label class="col-md-2 col-form-label" for="colleges">پرداخت نهایی(ریال) </label>
-                    <div class="col-md-3">
-                        <input type="number" id="colleges"
-                               class="form-control" name="pay_final">
-                    </div>
+{{--                <div class="form-group row">--}}
+{{--                    <label class="col-md-2 col-form-label" for="colleges">پرداخت نهایی(ریال) </label>--}}
+{{--                    <div class="col-md-3">--}}
+{{--                        <input type="number" id="colleges"--}}
+{{--                               class="form-control" name="pay_final">--}}
+{{--                    </div>--}}
 
-                </div>
+{{--                </div>--}}
 
                 <div class="row">
                     <label class="col-md-2 col-form-label  " for="documents">اسناد</label>
@@ -186,104 +206,254 @@
                 </button>
             </div>
             <h5 class="py-2 ">قرارداد ها :</h5>
-            <div class="table-responsive">
-                <table id="قرارداد ها" class="table table-striped table-bordered ">
-                    <thead class="text-center   ">
-                    <tr>
-                        <th>ردیف</th>
-                        <th>عنوان طرح</th>
-                        <th>شماره قرارداد بیرونی</th>
-                        <th>شماره قرارداد داخلی</th>
-                        <th>نوع طرح</th>
-                        <th> کارفرما</th>
-                        <th>مجریان طرح</th>
-                        <th>همکاران طرح</th>
-                        <th>دانشکده مربوطه</th>
-                        <th>گروه مربوطه</th>
-                        <th>زمان شروع</th>
-                        <th>مدت قراداد</th>
-                        <th>تاریخ خاتمه قرارداد</th>
-                        <th>مشارکتی/انفرادی</th>
-                        <th>مبلغ طرح</th>
-                        <th>وضعیت</th>
-                        <th>پرداخت اول</th>
-                        <th>پرداخت دوم</th>
-                        <th>پرداخت سوم</th>
-                        <th>پرداخت نهایی</th>
-                        <th>مشاهده</th>
-                    </tr>
-                    </thead>
-                    <tbody class=" text-center">
+            <ul class="nav nav-tabs nav-fill" id="myTab" role="tablist">
+                <li class="nav-item">
+                    <a class="nav-link active text-dark" style="font-size: 1.3rem" id="home-tab-fill" data-toggle="tab" href="#home-fill" role="tab" aria-controls="home-fill" aria-selected="true"><p>در دست اجرا</p> </a>
+                </li>
 
-                    {{--          @php($i=0)--}}
-                    {{--          @php($date = new \App\Http\Controllers\PersianDate())--}}
-                    <?php
-                    $i=0;
-                    $date = new \App\Http\Controllers\PersianDate();
-                    $originaldate = date("Y-m-d");
-                    $converted = DateTime::createFromFormat("Y-m-d", $originaldate);
-                    $converted1months = $converted->add(new DateInterval("P1M"));//1 month later
-                    ?>
-                    @foreach($contracts as $contract)
+                <li class="nav-item">
+                    <a class="nav-link text-dark" style="font-size: 1.3rem"  id="profile-tab-fill" data-toggle="tab" href="#profile-fill" role="tab" aria-controls="profile-fill" aria-selected="false"><p>خاتمه یافته ها </p></a>
 
-                        <tr class="
+                </li>
+
+
+            </ul>
+            <div class="tab-content pt-1">
+                <div class="tab-pane active" id="home-fill" role="tabpanel" aria-labelledby="home-tab-fill">
+                    <div class="table-responsive">
+                        <table id="قرارداد ها" class="table table-striped table-bordered ">
+                            <thead class="text-center   ">
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان طرح</th>
+                                <th>شماره قرارداد بیرونی</th>
+                                <th>شماره قرارداد داخلی</th>
+                                <th>نوع طرح</th>
+                                <th> کارفرما</th>
+                                <th>مجریان طرح</th>
+                                <th>همکاران طرح</th>
+                                <th>دانشکده مربوطه</th>
+                                <th>گروه مربوطه</th>
+                                <th>زمان شروع</th>
+                                <th>مدت قراداد</th>
+                                <th>تاریخ خاتمه قرارداد</th>
+                                <th>مشارکتی/انفرادی</th>
+                                <th>مبلغ طرح</th>
+                                <th>وضعیت</th>
+                                <th>پرداخت اول</th>
+                                <th>پرداخت دوم</th>
+                                <th>پرداخت سوم</th>
+                                <th>پرداخت نهایی</th>
+                                <th>مشاهده</th>
+                            </tr>
+                            </thead>
+                            <tbody class=" text-center">
+
+                            {{--          @php($i=0)--}}
+                            {{--          @php($date = new \App\Http\Controllers\PersianDate())--}}
+                            <?php
+                            $i=0;
+                            $date = new \App\Http\Controllers\PersianDate();
+                            $originaldate = date("Y-m-d");
+                            $converted = DateTime::createFromFormat("Y-m-d", $originaldate);
+                            $converted1months = $converted->add(new DateInterval("P1M"));//1 month later
+                            ?>
+                            @foreach($contracts as $contract)
+
+                                @if($contract->status == 'خاتمه یافته') @continue @endif
+
+                                <tr class="
 
                             @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) status-finished
                             @elseif(strlen($contract->finish_date) > 2 && $converted1months > $contract->finish_date) status-is-finishing
-							
+
                             @endif
 
-                                "
-																style="
-																@if($contract->status == 'خاتمه یافته')
-																	background-color:green !important;
-																	color:#fff !important;
-																	@endif
-																"
-																
-																
-																
-																
-								>
+                                    "
+                                    style="
+                                    @if($contract->status == 'خاتمه یافته')
+                                        background-color:green !important;
+                                        color:#fff !important;
+                                    @endif
+                                        "
 
 
 
-                            <th scope="row">{{++$i}}</th>
-                            <td><a class="
+
+                                >
+
+
+
+                                    <th scope="row">{{++$i}}</th>
+                                    <td><a class="
                             @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) text-dark
                             @endif
-                                        " href="{{route('contract', $contract->id)}}">{{$contract->name}}</a></td>
-                            <td>{{$contract->ext_no}}</td>
-                            <td>{{$contract->int_no}}</td>
-                            <td>{{$contract->type}}</td>
-                            <td>{{$contract->employer}}</td>
-                            <td>{{$contract->executer}}</td>
-                            <td>{{$contract->partners}}</td>
-                            <td>{{$contract->department}}</td>
-                            <td>{{$contract->group_name}}</td>
-                            <td>{{$date->toPersiandate($contract->start_date,'Y/m/d')}}</td>
-                            <td>{{$contract->duration}}</td>
-                            <td>{{$date->toPersiandate($contract->finish_date,'Y/m/d')}}</td>
-                            <td>{{$contract->participation}}</td>
-                            <td>{{number_format($contract->cost)}} ریال </td>
-                            <td>{{$contract->status}}</td>
-                            <td>{{$contract->pay1}}</td>
-                            <td>{{$contract->pay2}}</td>
-                            <td>{{$contract->pay3}}</td>
-                            <td>{{$contract->pay_final}}</td>
-                            <td>
-                                <a href="{{route('contract', $contract->id)}}" class="btn btn-light">ویرایش</a>
-                            </td>
+                                            " href="{{route('contract', $contract->id)}}">{{$contract->name}}</a></td>
+                                    <td>{{$contract->ext_no}}</td>
+                                    <td>{{$contract->int_no}}</td>
+                                    <td>{{$contract->type}}</td>
+                                    <td>{{$contract->employer}}</td>
+                                    <td>{{$contract->executer}}</td>
+                                    <td>{{$contract->partners}}</td>
+                                    <td>{{$contract->department}}</td>
+                                    <td>{{$contract->group_name}}</td>
+                                    <td>{{$date->toPersiandate($contract->start_date,'Y/m/d')}}</td>
+                                    <td>{{$contract->duration}}</td>
+                                    <td>{{$date->toPersiandate($contract->finish_date,'Y/m/d')}}</td>
+                                    <td>{{$contract->participation}}</td>
+                                    <td>{{number_format($contract->cost)}} ریال </td>
+                                    <td>{{$contract->status}}</td>
+                                    <td>{{$contract->pay1}}</td>
+                                    <td>{{$contract->pay2}}</td>
+                                    <td>{{$contract->pay3}}</td>
+                                    <td>{{$contract->pay_final}}</td>
+                                    <td>
+                                        <a href="{{route('contract', $contract->id)}}" class="btn btn-light">ویرایش</a>
+                                    </td>
 
-                        </tr>
-                    @endforeach
+                                </tr>
+                            @endforeach
 
 
 
-                    </tbody>
+                            </tbody>
 
-                </table>
+                        </table>
+                    </div>
+                </div>
+
+
+
+
+                <div class="tab-pane " id="profile-fill" role="tabpanel" aria-labelledby="profile-tab-fill">
+                    <div class="table-responsive">
+                        <table id="قرارداد ها" class="table table-striped table-bordered ">
+                            <thead class="text-center   ">
+                            <tr>
+                                <th>ردیف</th>
+                                <th>عنوان طرح</th>
+                                <th>شماره قرارداد بیرونی</th>
+                                <th>شماره قرارداد داخلی</th>
+                                <th>نوع طرح</th>
+                                <th> کارفرما</th>
+                                <th>مجریان طرح</th>
+                                <th>همکاران طرح</th>
+                                <th>دانشکده مربوطه</th>
+                                <th>گروه مربوطه</th>
+                                <th>زمان شروع</th>
+                                <th>مدت قراداد</th>
+                                <th>تاریخ خاتمه قرارداد</th>
+                                <th>مشارکتی/انفرادی</th>
+                                <th>مبلغ طرح</th>
+                                <th>وضعیت</th>
+                                <th>پرداخت اول</th>
+                                <th>پرداخت دوم</th>
+                                <th>پرداخت سوم</th>
+                                <th>پرداخت نهایی</th>
+                                <th>مشاهده</th>
+                            </tr>
+                            </thead>
+                            <tbody class=" text-center">
+
+                            {{--          @php($i=0)--}}
+                            {{--          @php($date = new \App\Http\Controllers\PersianDate())--}}
+                            <?php
+                            $i=0;
+                            $date = new \App\Http\Controllers\PersianDate();
+                            $originaldate = date("Y-m-d");
+                            $converted = DateTime::createFromFormat("Y-m-d", $originaldate);
+                            $converted1months = $converted->add(new DateInterval("P1M"));//1 month later
+                            ?>
+                            @foreach($contracts as $contract)
+
+                                @if($contract->status != 'خاتمه یافته') @continue @endif
+
+                                <tr class="
+
+                            @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) status-finished
+                            @elseif(strlen($contract->finish_date) > 2 && $converted1months > $contract->finish_date) status-is-finishing
+
+                            @endif
+
+                                        "
+                                    style="
+                                    @if($contract->status == 'خاتمه یافته')
+                                            background-color:green !important;
+                                            color:#fff !important;
+                                    @endif
+                                            "
+
+
+
+
+                                >
+
+
+
+                                    <th scope="row">{{++$i}}</th>
+                                    <td><a class="
+                            @if(strlen($contract->finish_date) > 2 && $originaldate > $contract->finish_date) text-dark
+                            @endif
+                                                " href="{{route('contract', $contract->id)}}">{{$contract->name}}</a></td>
+                                    <td>{{$contract->ext_no}}</td>
+                                    <td>{{$contract->int_no}}</td>
+                                    <td>{{$contract->type}}</td>
+                                    <td>{{$contract->employer}}</td>
+                                    <td>{{$contract->executer}}</td>
+                                    <td>{{$contract->partners}}</td>
+                                    <td>{{$contract->department}}</td>
+                                    <td>{{$contract->group_name}}</td>
+                                    <td>{{$date->toPersiandate($contract->start_date,'Y/m/d')}}</td>
+                                    <td>{{$contract->duration}}</td>
+                                    <td>{{$date->toPersiandate($contract->finish_date,'Y/m/d')}}</td>
+                                    <td>{{$contract->participation}}</td>
+                                    <td>{{number_format($contract->cost)}} ریال </td>
+                                    <td>{{$contract->status}}</td>
+                                    <td>{{$contract->pay1}}</td>
+                                    <td>{{$contract->pay2}}</td>
+                                    <td>{{$contract->pay3}}</td>
+                                    <td>{{$contract->pay_final}}</td>
+                                    <td>
+                                        <a href="{{route('contract', $contract->id)}}" class="btn btn-light">ویرایش</a>
+                                    </td>
+
+                                </tr>
+                            @endforeach
+
+
+
+                            </tbody>
+
+                        </table>
+                    </div>
+                </div>
             </div>
+
         </div>
     </section>
+    <script>
+        function insertInput() {
+            const div = document.createElement('div');
+
+            // div.className = 'row';
+           div.classList.add("row")
+           div.classList.add("col-12")
+           div.classList.add("my-2")
+           div.classList.add("p-0")
+
+
+            div.innerHTML = `
+<label class="col-md-2 col-form-label mr-3" for="projectExecutives">مجری طرح</label>
+                    <div class="col-md-3">
+                        <input type="text" id="projectExecutives" required="" placeholder="نام مجری"
+                               class="form-control" name="executer_name[]">
+
+
+                    </div>
+
+  `;
+
+            document.getElementById('executer').appendChild(div);
+        }
+    </script>
 @endsection

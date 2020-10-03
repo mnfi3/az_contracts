@@ -26,7 +26,6 @@ class ContractController extends Controller
       'int_no' => 'required|string|max:250',
       'type' => 'required|string|max:250',
       'employer' => 'required|string|max:250',
-      'executer' => 'required|string|max:250',
       'partners' => 'required|string|max:250',
       'department' => 'required|string|max:250',
       'group_name' => 'required|string|max:250',
@@ -42,6 +41,12 @@ class ContractController extends Controller
       'pay_final' => '',
     ]);
 
+    $executers = '';
+    if ($request->executer_name != null)
+      $executers  = implode(',', $request->executer_name);
+
+
+
 
     $date = new PersianDate();
     $start_date = $date->toGregorianDate(PersianNumber::persianToLatin(str_replace(' ','',$request->start_date)));
@@ -53,7 +58,7 @@ class ContractController extends Controller
       'type' => $request->type,
       'employer' => $request->employer,
       'partners' => $request->partners,
-      'executer' => $request->executer,
+      'executer' => $executers,
       'department' => $request->department,
       'group_name' => $request->group_name,
       'start_date' => $start_date,
@@ -62,6 +67,8 @@ class ContractController extends Controller
       'status' => $request->status,
       'participation' => $request->participation,
       'cost' => $request->cost,
+      'payment' => '',
+      'mobile' => $request->mobile,
       'pay1' => $request->pay1,
       'pay2' => $request->pay2,
       'pay3' => $request->pay3,
@@ -96,31 +103,54 @@ class ContractController extends Controller
 
   public function edit(Request $request){
     $id = $request->id;
-    $this->validate($request, [
-      'name' => 'required|string|max:255',
-      'ext_no' => 'required|string|max:255',
-      'int_no' => 'required|string|max:250',
-      'type' => 'required|string|max:250',
-      'employer' => 'required|string|max:250',
-      'executer' => 'required|string|max:250',
-      'partners' => 'required|string|max:250',
-      'department' => 'required|string|max:250',
-      'group_name' => 'required|string|max:250',
-      'start_date' => 'required|string|max:250',
-      'duration' => 'required|string|max:250',
-      'finish_date' => 'required|string|max:250',
-      'status' => 'required|string|max:250',
-      'participation' => 'required|string|max:250',
-      'cost' => 'required|numeric',
-      'pay1' => '',
-      'pay2' => '',
-      'pay3' => '',
-      'pay_final' => '',
-    ]);
+
+
+//    $this->validate($request, [
+//      'name' => 'required|string|max:255',
+//      'ext_no' => 'required|string|max:255',
+//      'int_no' => 'required|string|max:250',
+//      'type' => 'required|string|max:250',
+//      'employer' => 'required|string|max:250',
+////      'executer' => 'required|string|max:250',
+//      'partners' => 'required|string|max:250',
+//      'department' => 'required|string|max:250',
+//      'group_name' => 'required|string|max:250',
+//      'start_date' => 'required|string|max:250',
+//      'duration' => 'required|string|max:250',
+//      'finish_date' => 'required|string|max:250',
+//      'status' => 'required|string|max:250',
+//      'participation' => 'required|string|max:250',
+//      'cost' => 'required|numeric',
+//      'pay1' => '',
+//      'pay2' => '',
+//      'pay3' => '',
+//      'pay_final' => '',
+//    ]);
 
     $date = new PersianDate();
     $start_date = $date->toGregorianDate(PersianNumber::persianToLatin(str_replace(' ','',$request->start_date)));
     $finish_date = $date->toGregorianDate(PersianNumber::persianToLatin(str_replace(' ','',$request->finish_date)));
+
+
+
+    $executers = '';
+    if ($request->executer_name != null)
+      $executers  = implode(',', $request->executer_name);
+
+    $payment = '';
+    if ($request->payment_amount != null && count($request->payment_amount) > 1){
+      for ($i = 0 ; $i<count($request->payment_amount) ; $i++) {
+        $payment .=
+          $request->payment_amount[$i].','.
+          $request->payment_executer[$i].','.
+          $date->toGregorianDate(PersianNumber::persianToLatin(str_replace(' ','',$request->payment_date[$i]))).'#';
+      }
+      $payment = substr($payment, 0, -1);
+    }
+
+
+
+
 
     $contract = Contract::find($id);
     $contract->name = $request->name;
@@ -128,7 +158,7 @@ class ContractController extends Controller
     $contract->int_no = $request->int_no;
     $contract->type = $request->type;
     $contract->employer = $request->employer;
-    $contract->executer = $request->executer;
+    $contract->executer = $executers;
     $contract->partners = $request->partners;
     $contract->department = $request->department;
     $contract->group_name = $request->group_name;
@@ -138,6 +168,8 @@ class ContractController extends Controller
     $contract->status = $request->status;
     $contract->participation = $request->participation;
     $contract->cost = $request->cost;
+    $contract->payment = $payment;
+    $contract->mobile = $request->mobile;
     $contract->pay1 = $request->pay1;
     $contract->pay2 = $request->pay2;
     $contract->pay3 = $request->pay3;

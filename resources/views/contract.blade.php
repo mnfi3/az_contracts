@@ -43,12 +43,48 @@
             <input type="text" id="employer" required="" value="{{$contract->employer}}"
                    class="form-control" name="employer" disabled>
           </div>
-          <label class="col-md-2 text-right  col-form-label" for="projectExecutives">مجریان طرح</label>
-          <div class="col-md-3">
-            <input type="text" id="projectExecutives" required="" value="{{$contract->executer}}"
-                   class="form-control" name="executer" disabled>
-          </div>
+
+
+            <label class="col-md-2 text-right col-form-label" for="colleges"> شماره موبایل (برای ارسال پیام)</label>
+            <div class="col-md-3">
+                <input type="number" id="colleges"  value="{{$contract->mobile}}"
+                       class="form-control" name="mobile"  >
+            </div>
+
         </div>
+
+
+
+
+          @php($executers = explode(',', $contract->executer))
+          @foreach($executers as $executer)
+
+          <div class="form-group row">
+          <label class="col-md-2 text-right  col-form-label" for="projectExecutives">مجری طرح</label>
+            <div class="col-md-3">
+                <input type="text" id="projectExecutives" required="" placeholder="مجری طرح"
+                       value="{{$executer}}"
+                       class="form-control" name="executer_name[]">
+
+
+            </div>
+
+            <div class="col-md-3">
+                <div class="btn text-white p-1 btn-app" onclick="insertInput()"  style="border-radius: 75px!important;">افزودن مجری جدید <span><i class="fa fa-plus"></i></span></div>
+
+            </div>
+
+        </div>
+
+        @endforeach
+          <div class="form-group row" id="executer" style="width: 100%!important;">
+
+          </div>
+
+
+
+
+
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="college">دانشکده مربوطه</label>
           <div class="col-md-3">
@@ -117,26 +153,81 @@
                          class="form-control" name="partners" disabled>
               </div>
 
-              <label class="col-md-2 text-right  col-form-label " for="status"  >پرداخت اول(ریال) </label>
-              <div class="col-md-3">
-                  <input type="number" id="pay1" required="" value="{{$contract->pay1}}"
-                         class="form-control" name="pay1" disabled>
-              </div>
-
           </div>
 
-          <div class="form-group row">
-              <label class="col-md-2 col-form-label" for="colleges">پرداخت دوم(ریال) </label>
-              <div class="col-md-3">
-                  <input type="number" id="pay2"  value="{{$contract->pay2}}"
-                         class="form-control" name="pay2" disabled>
+
+
+
+          @if(strlen($contract->payment) > 3)
+              @php($payments = explode('#', $contract->payment))
+
+              @foreach($payments as $payment)
+                  @php($payment_amount = explode(',', $payment)[0])
+                  @php($payment_executer = explode(',', $payment)[1])
+                  @php($payment_date = explode(',', $payment)[2])
+
+                  <div class="form-group row">
+                      <label class="col-md-2  col-form-label " for="status"  >اطلاعات پرداخت</label>
+                      <div class="col-md-3">
+                          <input type="number" id="pay1"  value="{{$payment_amount}}" placeholder="مقدار به تومان"
+                                 class="form-control" name="payment_amount[]">
+                      </div>
+                      @php($executers = explode(',', $contract->executer))
+                      <div class="col-md-3">
+                          <select name="payment_executer[]" class="form-control">
+                              @foreach($executers  as $executer)
+                                  <option value="{{$executer}}" @if($executer == $payment_executer) selected @endif >{{$executer}}</option>
+                              @endforeach
+                          </select>
+                      </div>
+                      <div class="col-md-3">
+                          <input type="text" id="startDay"  value="{{$payment_date}}"
+                                 class="form-control j-date"
+                                 name="payment_date[]">
+                      </div>
+                      <div class="col-md-1">
+                          <div class="btn text-white p-1 btn-app" onclick="insertPaymentInput()"  style="border-radius: 5px!important;width: 37px"><span><i class="fa fa-plus"></i></span>  </div>
+
+                      </div>
+
+                  </div>
+              @endforeach
+
+          @else
+              <div class="form-group row">
+                  <label class="col-md-2  col-form-label " for="status"  >اطلاعات پرداخت</label>
+                  <div class="col-md-3">
+                      <input type="number" id="pay1"  value="" placeholder="مقدار به تومان"
+                             class="form-control" name="payment_amount[]">
+                  </div>
+                  @php($executers = explode(',', $contract->executer))
+                  <div class="col-md-3">
+                      <select name="payment_executer[]" class="form-control">
+                          @foreach($executers  as $executer)
+                              <option value="{{$executer}}" >{{$executer}}</option>
+                          @endforeach
+                      </select>
+                  </div>
+                  <div class="col-md-3">
+                      <input type="text" id="startDay"  value=""
+                             class="form-control j-date"
+                             name="payment_date[]">
+                  </div>
+                  <div class="col-md-1">
+                      <div class="btn text-white p-1 btn-app" onclick="insertPaymentInput()"  style="border-radius: 5px!important;width: 37px"><span><i class="fa fa-plus"></i></span>  </div>
+
+                  </div>
+
               </div>
 
-              <label class="col-md-2 text-right  col-form-label " for="status">پرداخت سوم(ریال) </label>
-              <div class="col-md-3">
-                  <input type="number" id="pay3"  value="{{$contract->pay3}}"
-                         class="form-control" name="pay3" disabled>
-              </div>
+          @endif
+
+
+
+
+
+          <div class="form-group row" id="payment">
+
 
           </div>
 
@@ -165,7 +256,7 @@
           <input type="hidden" name="id" value="{{$contract->id}}">
         <div class="row">
           <div class="col-md-2 ">
-             
+
             <button class="my-2 btn  btn-app" type="submit">
               <i class="fal fa-edit mr-1"></i>
               ذخیره
@@ -306,7 +397,70 @@
 		 document.getElementById("status").disabled = !document.getElementById("status").disabled;
 		 document.getElementById("colleges").disabled = !document.getElementById("colleges").disabled;
 		 document.getElementById("doc").disabled = !document.getElementById("doc").disabled;
-		
+
 		 }
   </script>
+  <script>
+      function insertPaymentInput() {
+          const div = document.createElement('div');
+
+          // div.className = 'row';
+          div.classList.add("row")
+          div.classList.add("col-12")
+          div.classList.add("my-2")
+          div.classList.add("p-0")
+
+
+          div.innerHTML = `
+<label class="col-md-2  col-form-label p-0" for="status"  >اطلاعات پرداخت</label>
+              <div class="col-md-3">
+                  <input type="number" id="pay1" required="" value="" placeholder="مقدار به تومان"
+                         class="form-control" name="payment_amount[]">
+              </div>
+              <div class="col-md-3">
+               @php($executers = explode(',', $contract->executer))
+                  <select name="payment_executer[]" class="form-control" required="">
+                  @foreach($executers as $executer)
+                      <option value="{{$executer}}">{{$executer}}</option>
+                  @endforeach
+                     </select>
+              </div>
+              <div class="col-md-3">
+                  <input type="text" id="startDay" required="" value="" placeholder="تاریخ"
+                         class="form-control j-date"
+                         name="payment_date[]">
+              </div>
+  `;
+
+          document.getElementById('payment').appendChild(div);
+      }
+  </script>
+
+  <script>
+    function insertInput() {
+      const div = document.createElement('div');
+
+      // div.className = 'row';
+      div.classList.add("row")
+      div.classList.add("col-12")
+      div.classList.add("my-2")
+      div.classList.add("p-0")
+
+
+      div.innerHTML = `
+<label class="col-md-2 col-form-label mr-3" for="projectExecutives">مجری طرح</label>
+                    <div class="col-md-3">
+                        <input type="text" id="projectExecutives" required="" placeholder="نام مجری"
+                               class="form-control" name="executer_name[]">
+
+
+                    </div>
+
+  `;
+
+      document.getElementById('executer').appendChild(div);
+    }
+  </script>
+
+
 @endsection
