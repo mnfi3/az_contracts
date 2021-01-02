@@ -112,7 +112,6 @@ class PersianDate {
 
   function toPersiandate($g_date, $input)
   {
-    if (strlen($g_date) < 2) return null;
     $g_date=str_replace('-','',$g_date);
     $g_date=str_replace('/','',$g_date);
 
@@ -129,13 +128,13 @@ class PersianDate {
     if($input=='j')
     {
       $persian_d=$persian_date[2];
-      if($persian_d{0}=='0') $persian_d=substr($persian_d,1);
+      if($persian_d[0]=='0') $persian_d=substr($persian_d,1);
       return $persian_d;
     }
     if($input=='n')
     {
       $persian_n=$persian_date[1];
-      if($persian_n{0}=='0') $persian_n=substr($persian_n,1);
+      if($persian_n[0]=='0') $persian_n=substr($persian_n,1);
       return $persian_n;
     }
 
@@ -152,7 +151,7 @@ class PersianDate {
     if($input=='compelete')
     {
       $persian_d=$persian_date[2];
-      if($persian_d{0}=='0') $persian_d=substr($persian_d,1);
+      if($persian_d[0]=='0') $persian_d=substr($persian_d,1);
       return $this->persian_day_names[date('w')].' '.$persian_d.' '.$this->persian_month_names[$persian_date[1]].' '.$persian_date[0];
     }
   }

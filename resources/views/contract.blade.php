@@ -17,31 +17,31 @@
           <label class="col-md-2 col-form-label" for="title">عنوان طرح</label>
           <div class="col-md-3">
             <input type="text" id="title" required="" value="{{$contract->name}}"
-                   class="form-control" name="name" disabled>
+                   class="form-control" name="name" >
           </div>
           <label class="col-md-2 text-right  col-form-label  " for="titleType">نوع طرح</label>
           <div class="col-md-3">
             <input type="text" id="titleType" required="" value="{{$contract->type}}"
-                   class="form-control" name="type" disabled>
+                   class="form-control" name="type" >
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="outsideNumber">شماره قرارداد بیرونی</label>
           <div class="col-md-3">
             <input type="text" id="outsideNumber" required="" value="{{$contract->ext_no}}"
-                   class="form-control" name="ext_no" disabled>
+                   class="form-control" name="ext_no" >
           </div>
           <label class="col-md-2 text-right col-form-label" for="insideNumber">شماره قرارداد داخلی</label>
           <div class="col-md-3">
             <input type="text" id="insideNumber" required="" value="{{$contract->int_no}}"
-                   class="form-control" name="int_no" disabled>
+                   class="form-control" name="int_no" >
           </div>
         </div>
         <div class="form-group row">
           <label class="col-md-2 col-form-label" for="employer">کارفرما</label>
           <div class="col-md-3">
             <input type="text" id="employer" required="" value="{{$contract->employer}}"
-                   class="form-control" name="employer" disabled>
+                   class="form-control" name="employer" >
           </div>
 
 
@@ -89,12 +89,12 @@
           <label class="col-md-2 col-form-label" for="college">دانشکده مربوطه</label>
           <div class="col-md-3">
             <input type="text" id="college" required="" value="{{$contract->department}}"
-                   class="form-control" name="department" disabled>
+                   class="form-control" name="department" >
           </div>
           <label class="col-md-2 text-right  col-form-label" for="field">گروه مربوطه</label>
           <div class="col-md-3">
             <input type="text" id="field" required="" value="{{$contract->group_name}}"
-                   class="form-control" name="group_name" disabled>
+                   class="form-control" name="group_name" >
           </div>
         </div>
         <div class="form-group row">
@@ -102,14 +102,14 @@
           <div class="col-md-3">
             <input type="text" id="startDay" required="" value="{{$contract->start_date}}"
                    class="form-control j-date"
-                   name="start_date" disabled>
+                   name="start_date" >
           </div>
 
           <label class="col-md-2 text-right col-form-label " for="finishDay">زمان خاتمه قرارداد</label>
           <div class="col-md-3">
             <input type="text" id="finishDay" required="" value="{{$contract->finish_date}}"
                    class="form-control j-date"
-                   name="finish_date" disabled>
+                   name="finish_date" >
           </div>
 
         </div>
@@ -118,14 +118,14 @@
           <div class="col-md-3">
             <input type="text" id="term" required="" value="{{$contract->duration}}"
                    class="form-control start-day pwt-datepicker-input-element"
-                   name="duration" disabled>
+                   name="duration" >
           </div>
 
           <label class="col-md-2 text-right  col-form-label " for="type">مشارکتی یا انفرادی</label>
           <div class="col-md-3">
             <input type="text" id="type" required="" value="{{$contract->participation}}"
                    class="form-control"
-                   name="participation" disabled>
+                   name="participation" >
           </div>
 
         </div>
@@ -134,14 +134,14 @@
           <label class="col-md-2 col-form-label" for="amount">مبلغ طرح </label>
           <div class="col-md-3">
             <input type="text" id="amount" required="" value="{{$contract->cost}}"
-                   class="form-control" name="cost" disabled>
+                   class="form-control" name="cost" >
           </div>
 
             <label class="col-md-2 text-right  col-form-label " for="status">وضعیت طرح</label>
             <div class="col-md-3">
                 <input type="text" id="status" required="" value="{{$contract->status}}"
                        class="form-control"
-                       name="status" disabled>
+                       name="status" >
             </div>
 
         </div>
@@ -150,7 +150,7 @@
               <label class="col-md-2 col-form-label" for="colleges">همکاران طرح </label>
               <div class="col-md-3">
                   <input type="text" id="colleges" required="" value="{{$contract->partners}}"
-                         class="form-control" name="partners" disabled>
+                         class="form-control" name="partners" >
               </div>
 
           </div>
@@ -236,7 +236,7 @@
               <label class="col-md-2 col-form-label" for="colleges">پرداخت نهایی(ریال) </label>
               <div class="col-md-3">
                   <input type="number" id="payLast"  value="{{$contract->pay_final}}"
-                         class="form-control" name="pay_final" disabled>
+                         class="form-control" name="pay_final" >
               </div>
 
           </div>
@@ -248,7 +248,7 @@
               <div class="d-flex">
                 <input type="file" id="documents"
                        class="form-control-file" name="documents[]" id="doc">
-                <button class="btn btn-sm btn-light" onclick="addDocumentInput()" disabled>سند جدید</button>
+                <button class="btn btn-sm btn-light" onclick="addDocumentInput()" >سند جدید</button>
               </div>
             </div>
           </div>
@@ -265,10 +265,10 @@
         </div>
 
       </form>
-	      <button class="my-2 btn  btn-app mr-auto" onclick="myFunction()">
-                  <i class="fal fa-edit mr-1"></i>
-                  ویرایش
-              </button>
+	      {{--<button class="my-2 btn  btn-app mr-auto" onclick="myFunction()">--}}
+                  {{--<i class="fal fa-edit mr-1"></i>--}}
+                  {{--ویرایش--}}
+              {{--</button>button--}}
     </div>
   </section>
 
@@ -377,26 +377,26 @@
   </section>
     <script>
     function myFunction() {
-		 document.getElementById("title").disabled = !document.getElementById("title").disabled;
-         document.getElementById("pay1").disabled = !document.getElementById("pay1").disabled;
-		 document.getElementById("pay2").disabled = !document.getElementById("pay2").disabled;
-		 document.getElementById("pay3").disabled = !document.getElementById("pay3").disabled;
-		 document.getElementById("payLast").disabled = !document.getElementById("payLast").disabled;
-		  document.getElementById("titleType").disabled = !document.getElementById("titleType").disabled;
-		 document.getElementById("insideNumber").disabled = !document.getElementById("insideNumber").disabled;
-		 document.getElementById("outsideNumber").disabled = !document.getElementById("outsideNumber").disabled;
-		 document.getElementById("employer").disabled = !document.getElementById("employer").disabled;
-		 document.getElementById("projectExecutives").disabled = !document.getElementById("projectExecutives").disabled;
-		 document.getElementById("startDay").disabled = !document.getElementById("startDay").disabled;
-		 document.getElementById("finishDay").disabled = !document.getElementById("finishDay").disabled;
-		 document.getElementById("term").disabled = !document.getElementById("term").disabled;
-		 document.getElementById("college").disabled = !document.getElementById("college").disabled;
-		 document.getElementById("amount").disabled = !document.getElementById("amount").disabled;
-		 document.getElementById("field").disabled = !document.getElementById("field").disabled;
-		 document.getElementById("type").disabled = !document.getElementById("type").disabled;
-		 document.getElementById("status").disabled = !document.getElementById("status").disabled;
-		 document.getElementById("colleges").disabled = !document.getElementById("colleges").disabled;
-		 document.getElementById("doc").disabled = !document.getElementById("doc").disabled;
+		 // document.getElementById("title").disabled = !document.getElementById("title").disabled;
+         // document.getElementById("pay1").disabled = !document.getElementById("pay1").disabled;
+		 // document.getElementById("pay2").disabled = !document.getElementById("pay2").disabled;
+		 // document.getElementById("pay3").disabled = !document.getElementById("pay3").disabled;
+		 // document.getElementById("payLast").disabled = !document.getElementById("payLast").disabled;
+		 //  document.getElementById("titleType").disabled = !document.getElementById("titleType").disabled;
+		 // document.getElementById("insideNumber").disabled = !document.getElementById("insideNumber").disabled;
+		 // document.getElementById("outsideNumber").disabled = !document.getElementById("outsideNumber").disabled;
+		 // document.getElementById("employer").disabled = !document.getElementById("employer").disabled;
+		 // document.getElementById("projectExecutives").disabled = !document.getElementById("projectExecutives").disabled;
+		 // document.getElementById("startDay").disabled = !document.getElementById("startDay").disabled;
+		 // document.getElementById("finishDay").disabled = !document.getElementById("finishDay").disabled;
+		 // document.getElementById("term").disabled = !document.getElementById("term").disabled;
+		 // document.getElementById("college").disabled = !document.getElementById("college").disabled;
+		 // document.getElementById("amount").disabled = !document.getElementById("amount").disabled;
+		 // document.getElementById("field").disabled = !document.getElementById("field").disabled;
+		 // document.getElementById("type").disabled = !document.getElementById("type").disabled;
+		 // document.getElementById("status").disabled = !document.getElementById("status").disabled;
+		 // document.getElementById("colleges").disabled = !document.getElementById("colleges").disabled;
+		 // document.getElementById("doc").disabled = !document.getElementById("doc").disabled;
 
 		 }
   </script>

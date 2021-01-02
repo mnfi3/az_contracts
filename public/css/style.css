@@ -266,3 +266,18 @@ input:-webkit-autofill:active  {
   max-height: 300px;
   border-radius: 0.75rem;
 }
+.active p{
+  color: #fff;
+  background-color: #7a1164!important;
+  border-radius: 7px!important;
+  padding-bottom: 7px!important;
+  padding-top: 7px!important;
+}
+table a{
+  color: black;
+}
+table a:hover{
+  text-decoration: none;
+  color: #7a1164!important;
+  font-weight: 700;
+}
